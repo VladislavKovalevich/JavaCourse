@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<users>
+    <user>
+        <id>1</id>
+        <email>user.ten@gmail.com</email>
+        <password>7c4a8d09ca3762af61e59520943dc26494f8941b</password>
+        <role>ADMINISTRATOR</role>
+    </user>
+    <user>
+        <id>2</id>
+        <email>user.two@gmail.com</email>
+        <password>7b21848ac9af35be0ddb2d6b9fc3851934db8420</password>
+        <role>USER</role>
+    </user>
+    <user>
+        <id>3</id>
+        <email>user.three@gmail.com</email>
+        <password>8cb2237d0679ca88db6464eac60da96345513964</password>
+        <role>USER</role>
+    </user>
+</users>
