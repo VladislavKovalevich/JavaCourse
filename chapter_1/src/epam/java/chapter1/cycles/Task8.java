@@ -42,12 +42,11 @@ public class Task8 {
                 }
 
             } else {
-
-                System.out.println("Ошбика ввода");
+                System.out.println("Ошбика ввода: введены отрицательные числа");
             }
 
         } catch (InputMismatchException ex) {
-            System.out.println("Ошибка ввода");
+            System.out.println("Ошибка ввода: введены не целочисленные данные");
         }
     }
 }

@@ -8,17 +8,34 @@ import java.util.Scanner;
  */
 public class Task5 {
     public static void main(String[] args) {
-        double sum = 0;
         int e;
 
-        Scanner sc = new Scanner(System.in);
+        Scanner sc;
+        String message;
 
-        System.out.print("Введите число E: ");
+        double checkSum;
+        double sum;
+
+        int min;
+        int max;
+
+        sc = new Scanner(System.in);
+        message = "ведите число e: ";
+
+        System.out.print(message);
+
+        while (!sc.hasNextInt()){
+            sc.next();
+            System.out.println(message);
+        }
+
         e = sc.nextInt();
 
-        double checkSum = 0;
+        sum = 0;
+        min = -50;
+        max = 50;
 
-        for (int i = -50; i < 50; i++){
+        for (int i = min; i < max; i++){
             checkSum = 1/Math.pow(2, i) + 1/Math.pow(3, i);
             if (Math.abs(checkSum) >= e){
                 sum = sum + checkSum;

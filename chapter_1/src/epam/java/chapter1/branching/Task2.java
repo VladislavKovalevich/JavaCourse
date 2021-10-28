@@ -1,32 +1,22 @@
 package epam.java.chapter1.branching;
 
-import java.util.Scanner;
-
 /**
  * Найти max{min(a, b), min(c, d)}
  */
-
 public class Task2 {
     public static void main(String[] args) {
-        int a = 0;
-        int b = 0;
-        int c = 0;
-        int d = 0;
+        int a;
+        int b;
+        int c;
+        int d;
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите число a: ");
-        a = in.nextInt();
+        int minAB;
+        int minCD;
 
-        System.out.print("Введите число b: ");
-        b = in.nextInt();
-
-        System.out.print("Введите число c: ");
-        c = in.nextInt();
-
-        System.out.print("Введите число d: ");
-        d = in.nextInt();
-
-        int minAB, minCD;
+        a = 10;
+        b = 11;
+        c = 9;
+        d = 10;
 
         if (a <= b){
             minAB = a;

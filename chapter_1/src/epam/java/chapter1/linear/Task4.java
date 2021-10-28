@@ -6,14 +6,18 @@ package epam.java.chapter1.linear;
  */
 public class Task4 {
     public static void main(String[] args){
-        double value = 765.698;
+        double value;
 
-        int intValue = (int) value;
+        int intValue;
+        int modValue;
+        double resValue;
 
-        int modValue = (int)(value* 1000 - intValue* 1000);
+        value = 765.698;
 
-        double resValue = ((double)intValue / 1000) + modValue;
+        intValue = (int) value;
+        modValue = (int)(value * 1000 - intValue * 1000);
+        resValue = ((double)intValue / 1000) + modValue;
 
-        System.out.println("Результат = "+ resValue);
+        System.out.println("Результат = " + resValue);
     }
 }

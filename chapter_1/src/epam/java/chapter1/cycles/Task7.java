@@ -36,7 +36,7 @@ public class Task7 {
             }
 
         } catch (InputMismatchException ex) {
-            System.out.println("Ошибка ввода");
+            System.out.println("Ошибка ввода: введены не целочисленные данные");
         }
     }
 }

@@ -1,7 +1,5 @@
 package epam.java.chapter1.branching;
 
-import java.util.Scanner;
-
 /**
  * Вычислить значение функции
  */
@@ -10,10 +8,7 @@ public class Task5 {
         int x;
         double y;
 
-        Scanner in = new Scanner(System.in);
-
-        System.out.print("Введите значение аргумента x: ");
-        x = in.nextInt();
+        x = 4;
 
         if (x <= 3){
             y = (int) Math.pow(x, 2.0) - 3*x + 9;

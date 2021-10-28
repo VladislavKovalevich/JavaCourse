@@ -9,23 +9,31 @@ import java.util.Scanner;
 public class Task1 {
     public static void main(String[] args) {
         int arg;
+        String message;
+        Scanner in;
 
-        try (Scanner in = new Scanner(System.in)) {
-            System.out.print("Введтие a: ");
-            arg = in.nextInt();
+        message = "Введите число а: ";
+        in = new Scanner(System.in);
 
-            if (arg > 0) {
-                int sum = 0;
-                for (int i = 1; i <= arg; i++) {
-                    sum += i;
-                }
+        System.out.print(message);
 
-                System.out.println("Результат = " + sum);
-            } else {
-                System.out.println("Число не натуральное");
+        while (!in.hasNextInt()){
+            in.next();
+
+            System.out.println(message);
+        }
+
+        arg = in.nextInt();
+
+        if (arg > 0) {
+            int sum = 0;
+            for (int i = 1; i <= arg; i++) {
+                sum += i;
             }
-        } catch (Exception ex) {
-            System.out.println("Ошибка ввода");
+
+            System.out.println("Результат = " + sum);
+        } else {
+            System.out.println("Число не натуральное");
         }
     }
 }

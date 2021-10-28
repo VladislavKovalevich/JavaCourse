@@ -6,14 +6,21 @@ package epam.java.chapter1.linear;
  */
 public class Task6 {
     public static void main(String[] args) {
-        int x = 0, y = 0;
+        int x;
+        int y;
 
         boolean f1;
         boolean f2;
+        boolean result;
+
+        x = 0;
+        y = 0;
 
         f1 = (x <= 4 && x >= -4) && (y <= 0 && y >= -3);
         f2 = (x <= 2 && x >= -2) && (y >= 0 && y <= 4);
 
-        System.out.println("Результат = "+ (f1 || f2));
+        result = f1 || f2;
+
+        System.out.println("Результат = "+ result);
     }
 }

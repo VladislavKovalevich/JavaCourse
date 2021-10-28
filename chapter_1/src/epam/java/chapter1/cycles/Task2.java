@@ -1,9 +1,9 @@
 package epam.java.chapter1.cycles;
 
-import java.util.Scanner;
-
 /**
  * Вычислить значения функции на отрезке [а,b] c шагом h
+ *  y = x, x > 2
+ *  y = -x, x <= 2
  */
 public class Task2 {
     public static void main(String[] args) {
@@ -11,18 +11,13 @@ public class Task2 {
         double b;
         double h;
 
-        Scanner sc = new Scanner(System.in);
+        double sum;
 
-        System.out.print("Введите число А:");
-        a = sc.nextDouble();
+        a = 3.5;
+        b = 4.2;
+        h = 0.3;
 
-        System.out.print("Введите число B:");
-        b = sc.nextDouble();
-
-        System.out.print("Введите шаг H:");
-        h = sc.nextDouble();
-
-        double sum = 0;
+        sum = 0;
 
         for (double s = a; s <= b; s += h){
             if (s > 2.0){
@@ -32,6 +27,6 @@ public class Task2 {
             }
         }
 
-        System.out.println("Результат = "+ sum);
+        System.out.println("Результат = " + sum);
     }
 }
