@@ -1,7 +1,5 @@
 package epam.java.chapter2.decomposition;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Натуральное число, в записи которого n цифр, называется числом Армстронга, если сумма его цифр,
@@ -12,25 +10,15 @@ public class Task14 {
     public static void main(String[] args) {
         int k = 500;
 
-        List<Integer> array;
-
-        array = getArmstrongNumbers(k);
-
-        for (Integer item: array) {
-            System.out.print(item + "; ");
-        }
+        getArmstrongNumbers(k);
     }
 
-    private static List<Integer> getArmstrongNumbers(int k) {
-        List<Integer> array = new ArrayList<>();
-
+    private static void getArmstrongNumbers(int k) {
         for (int i = 1; i < k; i++) {
             if (isArmstrongNumber(i)){
-                array.add(i);
+                System.out.println(i + "; ");
             }
         }
-
-        return  array;
     }
 
     private static boolean isArmstrongNumber(int i) {

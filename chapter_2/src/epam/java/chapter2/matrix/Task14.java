@@ -1,5 +1,7 @@
 package epam.java.chapter2.matrix;
 
+import java.util.Arrays;
+
 /**
  * Магическим квадратом порядка n называется квадратная матрица размера nxn, составленная из чисел
  * (1, 2, 3, ..., n*n) так, что суммы по каждому столбцу, каждой строке и каждой из двух больших
@@ -7,13 +9,14 @@ package epam.java.chapter2.matrix;
  */
 public class Task14 {
     public static void main(String[] args) {
-        int n = 3;
+        int n;
         int[][] matrix;
+
+        n = 6;
 
         if (n % 2 == 0 && n > 2) {
             // метод формирования квадрата четной размерности
             matrix = squareSubSquareMethod(n);
-
         }else {
             if (n % 4 == 0) {
                 // метод формирования квадрата размерности кратной 4
@@ -24,21 +27,19 @@ public class Task14 {
             }
         }
 
-       for (int i = 0; i < matrix.length; i++) {
-           for (int j = 0; j < matrix[i].length; j++) {
-               System.out.print(matrix[i][j] + " ");
-           }
-           System.out.println();
-       }
+        for (int[] aMatrix : matrix) {
+            System.out.println(Arrays.toString(aMatrix));
+        }
 
     }
 
     private static int[][] squareSubSquareMethod(int n) {
-        int half = n/2;
-
-        int[][] matrix = new int[n][n];
+        int half;
+        int[][] matrix;
         int[][] tempMatrix;
 
+        half = n/2;
+        matrix = new int[n][n];
         tempMatrix = squareLoubereMethod(half);
 
         // получение значений элементов подквадратов
@@ -71,18 +72,24 @@ public class Task14 {
         }
 
         // перестановка отдельных элементов
-        int move = 0;
-        for (int i = 6; i < n; i++) {
-            if((i%4!=0)&&(i%2==0)) move++;
-        }
-        for (int j = matrix.length/2-move; j <= matrix.length/2+move-1; j++) {
-            for (int i = 0; i < tempMatrix.length; i++) {
+        int move;
 
+        move = 0;
+
+        for (int i = 6; i < n; i++) {
+            if((i % 4 != 0) && (i % 2 == 0)) {
+                move++;
+            }
+        }
+
+        for (int j = matrix.length/2 - move; j <= matrix.length/2 + move - 1; j++) {
+            for (int i = 0; i < tempMatrix.length; i++) {
                 int key = matrix[i][j];
                 matrix[i][j] = matrix[half+i][j];
                 matrix[half+i][j] = key;
             }
         }
+
         for (int j = 0; j <= 1; j++) {
             if (j == 0) {
                 int key = matrix[0][0];
@@ -95,6 +102,7 @@ public class Task14 {
                 matrix[n - 1][0] = key;
             }
         }
+
         for (int j = half+1; j < n-1; j++) {
             for (int i = 1; i < half-1; i++) {
                 int key = matrix[i][1];
@@ -102,16 +110,21 @@ public class Task14 {
                 matrix[half+i][1] = key;
             }
         }
+
         return matrix;
     }
 
 
     // метод Раусса-Болла для квадратов с размерностью кратной четырем
     private static int[][] squareRaussBollMethod(int n) {
-        int[] matrix[] = new int[n][n],
-              tempMatrix[] = new int[n][n];
+        int matrix[][];
+        int tempMatrix[][];
+        int value;
 
-        int value = 0;
+        matrix = new int[n][n];
+        tempMatrix = new int[n][n];
+        value = 0;
+
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 tempMatrix[i][j] = n*n - value;
@@ -120,10 +133,16 @@ public class Task14 {
             }
         }
 
-        int size = 4;
-        int x = 0;
-        int y = 0;
+        int size;
+        int x;
+        int y;
+
+        size = 4;
+        x = 0;
+        y = 0;
+
         for (int i = 0; i < (n*n/16); i++) {
+
             if (x == (int)Math.sqrt(n*n/16)) {
                 x = 0;
                 y++;
@@ -135,40 +154,51 @@ public class Task14 {
             }
             x++;
         }
+
         return matrix;
 
     }
 
     //метод Лубера для n-нечетных квадратов
     private static int[][] squareLoubereMethod(int n) {
-        int[][] matrix = new int[n][n];
+        int[][] matrix;
+        int count;
+        int y;
+        int x;
 
-        int count = 1, y = 0, x = matrix.length/2;
+        matrix = new int[n][n];
+        count = 1;
+        y = 0;
+        x = matrix.length/2;
 
-        while (true){
+        do {
             matrix[y][x] = count;
 
             count++;
-            if (((y == 0) && (x >= n-1)) && (matrix[n-1][0] != 0)){
+
+            if (((y == 0) && (x >= n - 1)) && (matrix[n - 1][0] != 0)) {
                 y++;
-            }
-            else {
+            } else {
                 y--;
+
                 if (y < 0) {
                     y = n - 1;
                 }
+
                 x++;
+
                 if (x == n) {
                     x = 0;
                 }
-                if(matrix[y][x]!=0){
-                    y+=2;
+
+                if (matrix[y][x] != 0) {
+                    y += 2;
                     x--;
                 }
             }
 
-            if(count==n*n+1) break;
-        }
+        } while (count != n * n + 1);
+
         return matrix;
     }
 }

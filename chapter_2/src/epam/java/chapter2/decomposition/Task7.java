@@ -11,18 +11,24 @@ public class Task7 {
     private static void getFactorialValueFromOddItems() {
         for (int i = 1; i < 10; i++) {
             if (i % 2 != 0){
-                System.out.println(i+"! = "+getFactorialValue(i));
+                printFactorial(getFactorialValue(i), i);
             }
         }
     }
 
     private static int getFactorialValue(int i) {
-        int result = 1;
+        int result;
 
-        for (int j = 0; j < i; j++) {
-            result *= i;
+        result = 1;
+
+        for (int j = 1; j <= i; j++) {
+            result *= j;
         }
 
         return result;
+    }
+
+    private static void printFactorial(int value, int number){
+        System.out.println(number + "! = " + value);
     }
 }

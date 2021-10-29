@@ -10,19 +10,24 @@ import java.util.Arrays;
  */
 public class Task7 {
     public static void main(String[] args) {
-        int[] arraySrc = {2, 5, 13};
-        int[] arrayDest = {4, 9, 15};
+        int[] arrayA;
+        int[] arrayB;
+        int[] fromAtoBIndexArray;
+        int currIndex;
 
-        int[] fromAtoBIndexArray = new int[arraySrc.length];
+        arrayA = new int[]{2, 3, 4};
+        arrayB = new int[]{4, 9, 15};
+        fromAtoBIndexArray = new int[arrayA.length];
+        currIndex = 0;
 
-        int currIndex = 0;
+        for (int i = 0; i < arrayA.length; i++) {
+            boolean flag;
 
-        for (int i = 0; i < arraySrc.length; i++) {
-            boolean flag = false;
+            flag = false;
 
-            for (int j = 0; j < arrayDest.length; j++) {
+            for (int j = 0; j < arrayB.length; j++) {
 
-                if (arrayDest[j] >= arraySrc[i] && !flag){
+                if (arrayB[j] >= arrayA[i] && !flag){
 
                     fromAtoBIndexArray[currIndex] = i + j;
                     currIndex++;
@@ -32,7 +37,7 @@ public class Task7 {
             }
 
             if (!flag){
-                fromAtoBIndexArray[currIndex] = i + arrayDest.length;
+                fromAtoBIndexArray[currIndex] = i + arrayB.length;
                 currIndex++;
             }
         }
@@ -40,16 +45,21 @@ public class Task7 {
         System.out.println("Индексы для вставки последовательности А в последовательность В:");
         System.out.println(Arrays.toString(fromAtoBIndexArray));
 
-        int[] fromBtoAIndexArray = new int[arrayDest.length];
+        int[] fromBtoAIndexArray;
+
+        fromBtoAIndexArray = new int[arrayB.length];
 
         currIndex = 0;
-        for (int i = 0; i < arrayDest.length; i++) {
 
-            boolean flag = false;
+        for (int i = 0; i < arrayB.length; i++) {
 
-            for (int j = 0; j < arraySrc.length; j++) {
+            boolean flag;
 
-                if (arrayDest[i] <= arraySrc[j] && !flag){
+            flag = false;
+
+            for (int j = 0; j < arrayA.length; j++) {
+
+                if (arrayB[i] <= arrayA[j] && !flag){
 
                     fromBtoAIndexArray[currIndex] = i + j;
                     currIndex++;
@@ -60,7 +70,7 @@ public class Task7 {
             }
 
             if (!flag){
-                fromBtoAIndexArray[currIndex] = i + arraySrc.length;
+                fromBtoAIndexArray[currIndex] = i + arrayA.length;
                 currIndex++;
             }
         }

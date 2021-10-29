@@ -1,67 +1,70 @@
 package epam.java.chapter2.decomposition;
 
-import java.math.BigInteger;
-
 /**
  * Написать программу, определяющую сумму n - значных чисел, содержащих только нечетные цифры.
  * Определить также, сколько четных цифр в найденной сумме. Для решения задачи использовать декомпозицию.
  */
 public class Task16 {
     public static void main(String[] args) {
-        int n = 3;
-        int k = 1;
+        int n;
+        int k;
+
+        long sum;
+        int countEvenNumbers;
+
+        n = 3;
+        k = 1;
 
         for (int i = 0; i < n; i++){
             k = k * 10;
         }
 
-        BigInteger sum;
-
         sum = getOddSum(k);
+        countEvenNumbers = getCountEvenNumbersInSum(sum);
 
-        int countEvenNumbers;
-
-        countEvenNumbers = getCountEvenNumbers(sum);
-
-        System.out.println("Sum = " + sum);
-
-        System.out.println("Counter = " + countEvenNumbers);
+        System.out.println("Сумма чисел с нечетными цифрами = " + sum);
+        System.out.println("Количество четных цифр в сумме = " + countEvenNumbers);
     }
 
-    private static int getCountEvenNumbers(BigInteger sum) {
-        int countEvenNumbers = 0;
+    private static int getCountEvenNumbersInSum(long sum) {
+        int countEvenNumbers;
 
-        while (sum.compareTo(BigInteger.valueOf(0)) > 0 ){
+        countEvenNumbers = 0;
 
-            BigInteger s = sum.mod(BigInteger.TEN);
-            s = s.mod(BigInteger.valueOf(2));
+        while (sum > 0 ){
 
-            if (s.compareTo(BigInteger.ZERO) == 0){
+            long s = sum % 10;
+            s = s % 2;
+
+            if (s == 0){
                 countEvenNumbers++;
             }
 
-            sum = sum.divide(BigInteger.TEN);
+            sum = sum / 10;
         }
 
         return countEvenNumbers;
     }
 
-    private static BigInteger getOddSum(int k) {
-        BigInteger sum = BigInteger.ZERO;
+    private static long getOddSum(int k) {
+        long sum;
+
+        sum = 0;
 
         for (long i = k / 10; i < k - 1; i++){
 
-            if (isAllOddNumbers(i)){
-                sum = sum.add(BigInteger.valueOf(i));
-
+            if (isAllDigitOdd(i)){
+                sum = sum + i;
             }
         }
 
         return sum;
     }
 
-    private static boolean isAllOddNumbers(long i) {
-        boolean flag = true;
+    private static boolean isAllDigitOdd(long i) {
+        boolean flag;
+
+        flag = true;
 
         while(i > 0 && flag){
             if ((i % 10) % 2 == 0){

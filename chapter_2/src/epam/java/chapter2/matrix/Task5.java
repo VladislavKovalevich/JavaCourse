@@ -12,7 +12,11 @@ package epam.java.chapter2.matrix;
 
 public class Task5 {
     public static void main(String[] args) {
-        int[] matrix[] = new int[6][6];
+        int size;
+        int matrix[][];
+
+        size = 7;
+        matrix = new int[size][size];
 
         for (int i = 0; i < matrix.length; i++) {
 

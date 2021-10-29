@@ -1,5 +1,7 @@
 package epam.java.chapter2.sorts;
 
+import java.util.Arrays;
+
 /**
  * Сортировка вставками. Дана последовательность чисел
  * a1, a2, ..., an. Требуется переставить числа в порядке
@@ -14,11 +16,12 @@ package epam.java.chapter2.sorts;
  */
 public class Task5 {
     public static void main(String[] args) {
-        int[] array = {55, 34, 44, 96, 114, 4, 0, 51, 19, 72};
-
+        int array[];
         int key;
         int lastIndex;
         int firstIndex;
+
+        array = new int[]{55, 34, 44, 96, 114, 4, 0, 51, 19, 72};
 
         for (int i = 0; i < array.length; i++) {
 
@@ -36,16 +39,16 @@ public class Task5 {
 
         }
 
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
+        System.out.println(Arrays.toString(array));
     }
 
     private static int binarySearch(int firstIndex, int lastIndex, int[] array, int element) {
-        int last = lastIndex;
-        int first = firstIndex;
-
+        int last;
+        int first;
         int middle;
+
+        last = lastIndex;
+        first = firstIndex;
 
         while (first < last){
 

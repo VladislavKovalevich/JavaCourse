@@ -13,9 +13,14 @@ import java.util.Arrays;
  */
 public class Task6 {
     public static void main(String[] args) {
-        int[] matrix[] = new int[8][8];
+        int size;
+        int matrix[][];
 
         int flag;
+
+        size = 8;
+        matrix = new int[size][size];
+
 
         for (int i = 0; i < matrix.length; i++) {
 
@@ -30,8 +35,8 @@ public class Task6 {
             }
         }
 
-        for (int i = 0; i < matrix.length; i++) {
-            System.out.println(Arrays.toString(matrix[i]));
+        for (int[] array : matrix) {
+            System.out.println(Arrays.toString(array));
         }
     }
 }

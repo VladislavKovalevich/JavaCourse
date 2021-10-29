@@ -5,7 +5,9 @@ package epam.java.chapter2.decomposition;
  */
 public class Task2 {
     public static void main(String[] args) {
-        int a[] = {27, 9, 81, 54};
+        int a[];
+
+        a = new int[]{27, 9, 81, 54};
 
         System.out.println(gcdNCount(a));
     }

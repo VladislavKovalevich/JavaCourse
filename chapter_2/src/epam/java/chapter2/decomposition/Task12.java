@@ -1,7 +1,6 @@
 package epam.java.chapter2.decomposition;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * Даны натуральные числа К и N. Написать метод(методы) формирования массива А, элементами которого
@@ -9,30 +8,49 @@ import java.util.List;
  */
 public class Task12 {
     public static void main(String[] args) {
-        int K = 10;
-        int N = 78;
+        int K;
+        int N;
 
-        List<Integer> array;
+        int[] array;
+
+        K = 10;
+        N = 78;
 
         array = fillArray(K, N);
 
-        System.out.println("Количество элементов = "+array.size());
-
-        for (Integer s:array) {
-            System.out.print(s + " ");
-        }
+        System.out.println(Arrays.toString(array));
     }
 
-    private static List<Integer> fillArray(int k, int n) {
-        List<Integer> array = new ArrayList<>();
+    private static int[] fillArray(int k, int n) {
+        int[] array;
+        int size;
+        int index;
+
+        size = getArraySize(k, n);
+        array = new int[size];
+        index = 0;
 
         for (int i = 1; i <= n; i++) {
             if (getSum(i) == k){
-                array.add(i);
+                array[index++] = i;
             }
         }
 
         return array;
+    }
+
+    private static int getArraySize(int k, int n) {
+        int count;
+
+        count = 0;
+
+        for (int i = 1; i <= n; i++) {
+            if (getSum(i) == k){
+                count++;
+            }
+        }
+
+        return count;
     }
 
     private static int getSum(int i) {

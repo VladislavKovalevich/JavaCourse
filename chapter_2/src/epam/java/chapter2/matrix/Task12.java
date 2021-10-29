@@ -7,9 +7,11 @@ import java.util.Random;
  */
 public class Task12 {
     public static void main(String[] args) {
-        int matrix [][] = new int[10][10];
+        int matrix [][];
+        Random r;
 
-        Random r = new Random();
+        matrix = new int[10][10];
+        r = new Random();
 
         for (int i = 0; i < matrix.length; i++) {
 
@@ -26,15 +28,23 @@ public class Task12 {
 
 
         for (int i = 0; i < matrix.length; i++) {
-            boolean needIteration = true;
+            boolean needIteration;
             int temp;
+
+            needIteration = true;
+
             while (needIteration) {
+
                 needIteration = false;
+
                 for (int j = 1; j < matrix[i].length; j++) {
+
                     if (matrix[i][j] > matrix[i][j - 1]) {
+
                         temp = matrix[i][j];
                         matrix[i][j] = matrix[i][j - 1];
                         matrix[i][j - 1] = temp;
+
                         needIteration = true;
                     }
                 }
@@ -44,22 +54,32 @@ public class Task12 {
         System.out.println("\n\nСортировака строк по убыванию:\n");
 
         for (int i = 0; i < matrix.length; i++) {
+
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j] + " ");
             }
+
             System.out.println();
         }
 
         for (int i = 0; i < matrix.length; i++) {
-            boolean needIteration = true;
+            boolean needIteration;
             int temp;
+
+            needIteration = true;
+
             while (needIteration) {
+
                 needIteration = false;
+
                 for (int j = 1; j < matrix[i].length; j++) {
+
                     if (matrix[i][j] < matrix[i][j - 1]) {
+
                         temp = matrix[i][j];
                         matrix[i][j] = matrix[i][j - 1];
                         matrix[i][j - 1] = temp;
+
                         needIteration = true;
                     }
                 }

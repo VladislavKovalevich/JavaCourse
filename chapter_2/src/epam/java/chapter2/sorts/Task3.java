@@ -1,5 +1,7 @@
 package epam.java.chapter2.sorts;
 
+import java.util.Arrays;
+
 /**
  * Сортировка выбором. Дана последовательность чисел
  * a1 <= a2 <= ...<= an.Требуется переставить элементы так,
@@ -11,12 +13,17 @@ package epam.java.chapter2.sorts;
  */
 public class Task3 {
     public static void main(String[] args) {
-        int[] array = {2, 3, 4, 4, 6, 11, 34, 55};
+        int[] array;
+
+        array = new int[]{2, 3, 4, 4, 6, 11, 34, 55};
 
         for (int i = 0; i < array.length; i++) {
 
-            int maxItemPos = i;
-            int maxItem = array[i];
+            int maxItemPos;
+            int maxItem;
+
+            maxItemPos = i;
+            maxItem = array[i];
 
             for (int j = i + 1; j < array.length; j++) {
 
@@ -31,8 +38,6 @@ public class Task3 {
             array[i] = maxItem;
         }
 
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
+        System.out.println(Arrays.toString(array));
     }
 }

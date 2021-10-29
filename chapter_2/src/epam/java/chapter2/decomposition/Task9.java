@@ -6,9 +6,17 @@ package epam.java.chapter2.decomposition;
  */
 public class Task9 {
     public static void main(String[] args) {
-        int X = 3, Y = 4, Z = 7, T = 11;
+        int X;
+        int Y;
+        int Z;
+        int T;
 
         double area;
+
+        X = 3;
+        Y = 4;
+        Z = 7;
+        T = 11;
 
         area = getAreaValue(X, Y, Z, T);
 
@@ -17,11 +25,9 @@ public class Task9 {
 
     private static double getAreaValue(int x, int y, int z, int t) {
         double area;
-
         double hypotenuse;
 
-        hypotenuse = getHypotenuse(x, y);
-
+        hypotenuse = getHypotenuseValue(x, y);
         area = getRectangularTriangleArea(x, y) + getRandomTriangleArea(hypotenuse, z, t);
 
         return area;
@@ -44,7 +50,7 @@ public class Task9 {
         return (double)(x*y) / 2.0;
     }
 
-    private static double getHypotenuse(int x, int y) {
+    private static double getHypotenuseValue(int x, int y) {
         return Math.sqrt(x*x + y*y);
     }
 }

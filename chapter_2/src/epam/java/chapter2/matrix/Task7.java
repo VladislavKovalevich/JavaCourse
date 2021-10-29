@@ -7,9 +7,14 @@ package epam.java.chapter2.matrix;
  */
 public class Task7 {
     public static void main(String[] args) {
-        double[] matrix[] = new double[4][4];
+        int size;
+        int positiveMatrixItemCount;
+        double[] matrix[];
 
-        int positiveMatrixItemCount = 0;
+        size = 4;
+        matrix = new double[size][size];
+
+        positiveMatrixItemCount = 0;
 
         for (int i = 0; i < matrix.length; i++) {
 

@@ -6,20 +6,28 @@ package epam.java.chapter2.decomposition;
  */
 public class Task3 {
     public static void main(String[] args) {
-        int sideValue = 2;
+        int sideValue;
+        double figureSquare;
 
-        double figureArea;
+        sideValue = 4;
+        figureSquare = getFigureSquare(sideValue);
 
-        figureArea = 6 * getTriangleArea(sideValue);
-
-        System.out.println(figureArea);
+        System.out.println(figureSquare);
     }
 
-    private static double getTriangleArea(int sideValue) {
+    private static double getTriangleSquare(int sideValue) {
         double areaValue;
 
         areaValue = (Math.sqrt(3) * (sideValue * sideValue)) / 4;
 
         return areaValue;
+    }
+
+    private static double getFigureSquare(int sideValue){
+        double figureSquare;
+
+        figureSquare = 6 * getTriangleSquare(sideValue);
+
+        return figureSquare;
     }
 }

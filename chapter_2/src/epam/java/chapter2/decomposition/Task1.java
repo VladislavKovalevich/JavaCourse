@@ -6,8 +6,11 @@ package epam.java.chapter2.decomposition;
  */
 public class Task1 {
     public static void main(String[] args) {
-        int a = 22;
-        int b = 44;
+        int a;
+        int b;
+
+        a = 1;
+        b = 1;
 
         System.out.println("НОК = " + lcm(a, b));
         System.out.println("НОД = " + gcd(a, b));
@@ -31,6 +34,6 @@ public class Task1 {
     }
 
     private static int lcm(int a, int b){
-        return (a*b)/gcd(a, b);
+        return (a*b) / gcd(a, b);
     }
 }

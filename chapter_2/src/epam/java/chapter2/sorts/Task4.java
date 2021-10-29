@@ -1,5 +1,7 @@
 package epam.java.chapter2.sorts;
 
+import java.util.Arrays;
+
 /**
  * Сортировка обменами. Дана последовательность чисел.
  * Требуется переставить числа в порядке возрастания.
@@ -11,9 +13,12 @@ package epam.java.chapter2.sorts;
  */
 public class Task4 {
     public static void main(String[] args) {
-        int[] array = {55, 34, 11, 6, 4, 4, 3, 2, 1, 0};
+        int[] array;
+        int permutationCount;
 
-        int permutationCount = 0;
+        array = new int[]{55, 34, 11, 6, 4, 4, 3, 2, 1, 0};
+        permutationCount = 0;
+
 
         for (int i = 0; i < array.length - 1; i++) {
 
@@ -33,9 +38,7 @@ public class Task4 {
 
         }
 
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
+        System.out.println(Arrays.toString(array));
 
         System.out.println("\nКоличество перестановок = "+ permutationCount);
 

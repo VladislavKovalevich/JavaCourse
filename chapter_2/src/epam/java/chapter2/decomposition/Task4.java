@@ -6,10 +6,12 @@ package epam.java.chapter2.decomposition;
  */
 public class Task4 {
     public static void main(String[] args) {
-        int[] xCoords = {2, 3, 4, 31, 29};
-        int[] yCoords = {0, -1, -21, 15, 31};
-
+        int[] xCoords;
+        int[] yCoords;
         double maxLength;
+
+        xCoords = new int[]{2, 3, 4, 31, 29};
+        yCoords = new int[]{0, -1, -21, 15, 31};
 
         maxLength = getMaxLength(xCoords, yCoords);
 
@@ -17,8 +19,10 @@ public class Task4 {
     }
 
     private static double getMaxLength(int[] xCoords, int[] yCoords) {
-        double maxLength = 0;
+        double maxLength;
         double currentLength;
+
+        maxLength = 0;
 
         for (int i = 0; i < xCoords.length - 1; i++){
 

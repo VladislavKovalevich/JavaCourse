@@ -9,17 +9,16 @@ import java.util.Random;
  */
 public class Task5 {
     public static void main(String[] args) {
-        int N = 10;
+        int N;
         int[] A;
 
-        A = fillArray(N);
-
         int maxValue;
-
-        maxValue = getMaxItem(A);
-
         int prevMaxValue;
 
+        N = 10;
+        A = fillArray(N);
+
+        maxValue = getMaxItem(A);
         prevMaxValue = getPrevMaxValue(maxValue, A);
 
         System.out.println(Arrays.toString(A));
@@ -27,7 +26,9 @@ public class Task5 {
     }
 
     private static int getPrevMaxValue(int maxItem, int[] array) {
-        int prevMaxValue = -1000;
+        int prevMaxValue;
+
+        prevMaxValue = Integer.MIN_VALUE;
 
         for (int i = 0; i < array.length; i++) {
             if (maxItem != array[i] && prevMaxValue < array[i]){
@@ -51,12 +52,14 @@ public class Task5 {
     }
 
     private static int[] fillArray(int N){
-        int[] array = new int[N];
+        int[] array;
+        Random r;
 
-        Random r = new Random();
+        array = new int[N];
+        r = new Random();
 
         for (int i = 0; i < array.length; i++) {
-            array[i] = r.nextInt(20) + 14;
+            array[i] = r.nextInt(15) + 5;
         }
 
         return array;

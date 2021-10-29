@@ -6,9 +6,14 @@ package epam.java.chapter2.arrays;
  */
 public class Task9 {
     public static void main(String[] args) {
-        int[] A = {-5, 36, -5, -9, -5, -9, 91, -9, 4, 1};
+        int[] A;
+        int[] countArray;
 
-        int[] countArray = new int[A.length];
+        int maxCount;
+        int index;
+
+        A = new int[]{-5, 36, -5, -9, -5, -9, 91, -9, 4, -5};
+        countArray = new int[A.length];
 
         for (int i = 0; i < countArray.length; i++){
             for (int item : A) {
@@ -18,8 +23,8 @@ public class Task9 {
             }
         }
 
-        int maxCount = 0;
-        int index = 0;
+        maxCount = 0;
+        index = 0;
 
         for (int i = 0; i < A.length; i++){
             if (countArray[i] == maxCount){

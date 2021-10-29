@@ -8,15 +8,17 @@ import java.util.Random;
  */
 public class Task9 {
     public static void main(String[] args) {
-        int matrix[][] = new int[4][4];
+        int matrix[][];
+        Random random;
 
-        Random r = new Random();
+        matrix = new int[4][4];
+        random = new Random();
 
         for (int i = 0; i < matrix.length; i++){
 
             for (int j = 0; j < matrix[i].length; j++){
 
-                matrix[i][j] = r.nextInt(50) + 10;
+                matrix[i][j] = random.nextInt(50) + 10;
                 System.out.print(" "+ matrix[i][j] + " ");
 
             }
@@ -24,24 +26,33 @@ public class Task9 {
             System.out.println();
         }
 
+        System.out.println();
 
-        int maxSum = 0, index = 0;
+        int maxSum;
+        int index;
+
+        maxSum = 0;
+        index = 0;
 
         for (int i = 0; i < matrix[0].length; i++){
 
-            int sum = 0;
+            int currSum;
+
+            currSum = 0;
 
             for (int j = 0; j < matrix.length; j++){
-                sum += matrix[j][i];
+                currSum += matrix[j][i];
             }
 
-            if (sum > maxSum){
-                maxSum = sum;
+            System.out.println("Сумма в столбце №"+ (i + 1) + ": "+ currSum);
+
+            if (currSum > maxSum){
+                maxSum = currSum;
                 index = i;
             }
         }
 
         System.out.println("\nМаксимальная сумма находиться в " +
-                "столбце " + (index + 1) + "\nЗначение суммы = " + maxSum);
+                "столбце №" + (index + 1) + "\nЗначение суммы = " + maxSum);
     }
 }

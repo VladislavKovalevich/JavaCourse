@@ -6,16 +6,20 @@ package epam.java.chapter2.decomposition;
  */
 public class Task17 {
     public static void main(String[] args) {
-        int value = 86;
+        int value;
+        int countOfIteration;
 
-        int countOfIteration = getCountOfIteration(value);
+        value = 86;
+        countOfIteration = getCountOfIteration(value);
 
         System.out.println("Количество итераций = "+ countOfIteration);
     }
 
     private static int getCountOfIteration(int value) {
-        int count = 0;
+        int count;
         int sumNumbers;
+
+        count = 0;
 
         while(value != 0){
             sumNumbers = getSumOfNumbers(value);
@@ -30,7 +34,9 @@ public class Task17 {
     }
 
     private static int getSumOfNumbers(int value) {
-        int s = 0;
+        int s;
+
+        s = 0;
 
         while (value != 0){
             s = s + value % 10;

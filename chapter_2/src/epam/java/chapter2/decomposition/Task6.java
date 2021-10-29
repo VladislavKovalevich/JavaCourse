@@ -5,9 +5,13 @@ package epam.java.chapter2.decomposition;
  */
 public class Task6 {
     public static void main(String[] args) {
-        int a = 6;
-        int b = 81;
-        int c = 9;
+        int a;
+        int b;
+        int c;
+
+        a = 6;
+        b = 81;
+        c = 9;
 
         if (isCoprimeNumbers(a, b, c)){
             System.out.println("Данные числа взаимно простые");
@@ -22,7 +26,7 @@ public class Task6 {
         gcdValue = gcd(a, b);
         gcdValue = gcd(gcdValue, c);
 
-        return gcdValue == 1;
+        return (gcdValue == 1);
     }
 
     private static int gcd(int a, int b){

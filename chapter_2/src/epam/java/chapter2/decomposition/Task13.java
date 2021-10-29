@@ -1,8 +1,5 @@
 package epam.java.chapter2.decomposition;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Два простых числа называются «близнецами», если они отличаются друг от друга на 2 (например, 41 и 43).
  * Найти и напечатать все пары «близнецов» из отрезка [n,2n], где n - заданное натуральное число больше 2. Для
@@ -10,38 +7,23 @@ import java.util.List;
  */
 public class Task13 {
     public static void main(String[] args) {
-        int n = 500;
+        int n = 30;
 
-        List<Integer> array;
-
-        array = getTwinsNumbers(n);
-
-        System.out.println("Количество пар близнецов = " + array.size() / 2);
-
-        for (int i = 0; i < array.size(); i+= 2) {
-            System.out.print(array.get(i) + "," + array.get(i + 1) + "  ");
-        }
+        getTwinsNumbers(n);
     }
 
-    private static List<Integer> getTwinsNumbers(int n) {
-        List<Integer> array = new ArrayList<>();
+    private static void getTwinsNumbers(int n) {
+        int[] array;
+        int size;
 
-        for (int i = n; i <= 2*n; i++){
-            if (isPrimalValue(i)){
-                array.add(i);
+        size = getArrayLength(n);
+        array = fillArray(size, n);
+
+        for (int i = 0; i < array.length - 2; i++){
+            if (isPrimalValue(array[i]) && isPrimalValue(array[i + 2])){
+                System.out.println("("+ array[i] + ", "+ array[i + 2] + ")");
             }
         }
-
-        List<Integer> arrayTwins = new ArrayList<>();
-
-        for (int i = 0; i < array.size() - 1; i += 2) {
-            if (array.get(i) + 2 == array.get(i + 1)){
-                arrayTwins.add(array.get(i));
-                arrayTwins.add(array.get(i+1));
-            }
-        }
-
-        return arrayTwins;
     }
 
     private static boolean isPrimalValue(int i) {
@@ -51,5 +33,25 @@ public class Task13 {
             }
         }
         return true;
+    }
+
+    private static int getArrayLength(int n) {
+        int length;
+
+        length = 2*n - n + 1;
+
+        return length;
+    }
+
+    private static int[] fillArray(int size, int n){
+        int[] array;
+
+        array = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            array[i] = n + i;
+        }
+
+        return array;
     }
 }

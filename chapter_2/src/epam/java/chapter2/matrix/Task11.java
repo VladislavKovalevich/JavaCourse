@@ -9,10 +9,11 @@ import java.util.Random;
 public class Task11 {
 
     public static void main(String[] args) {
+        int matrix [][];
+        Random r;
 
-        int matrix [][] = new int[10][20];
-
-        Random r = new Random();
+        matrix = new int[10][20];
+        r = new Random();
 
         for (int i = 0; i < matrix.length; i++) {
 
@@ -32,7 +33,8 @@ public class Task11 {
 
         for (int i = 0; i < matrix.length; i++) {
 
-            int count = 0;
+            int count;
+            count = 0;
 
             for (int j = 0; j < matrix[i].length; j++) {
 
@@ -43,7 +45,7 @@ public class Task11 {
             }
 
             if (count >= 3){
-                System.out.print(i + " ");
+                System.out.print(i + "; ");
             }
         }
     }

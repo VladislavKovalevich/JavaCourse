@@ -1,26 +1,19 @@
 package epam.java.chapter2.decomposition;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Найти все натуральные n-значные числа, цифры в которых образуют строго возрастающую
  * последовательность (например, 1234, 5789). Для решения задачи использовать декомпозицию.
  */
 public class Task15 {
     public static void main(String[] args) {
-        int n = 4;
+        int n;
 
-        List<Long> list = new ArrayList<>();
+        n = 4;
 
-        nextNumber(0,0, 0, n - 1, list);
-
-        for (Long l: list) {
-            System.out.print(l + "; ");
-        }
+        nextNumber(0,0, 0, n - 1);
     }
 
-    private static void nextNumber(int number, long num, int count, int n, List<Long> list) {
+    private static void nextNumber(int number, long num, int count, int n) {
         long s;
 
         if (number < 9){
@@ -29,10 +22,10 @@ public class Task15 {
                 s = num * 10 + i;
 
                 if (count == n) {
-                    list.add(s);
+                    System.out.println(s);
                 }
 
-                nextNumber(i, s, count + 1, n, list);
+                nextNumber(i, s, count + 1, n);
             }
         }
 

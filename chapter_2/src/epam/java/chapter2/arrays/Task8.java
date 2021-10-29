@@ -1,5 +1,7 @@
 package epam.java.chapter2.arrays;
 
+import java.util.Arrays;
+
 /**
  * Дана последовательность целых чисел a1, a2, ..., an.
  * Образовать новую последовательность, выбросив из
@@ -7,10 +9,13 @@ package epam.java.chapter2.arrays;
  */
 public class Task8 {
     public static void main(String[] args) {
-        int[] A = {-5, 36, -5, 4, -5, -5, 91, 9, -5, 1};
+        int[] A;
+        int minValue;
+        int minValueCount;
 
-        int minValue = 10000;
-        int minValueCount = 0;
+        A = new int[]{-5, 36, -5, 4, -5, -5, 91, 9, -5, 1};
+        minValue = Integer.MAX_VALUE;
+        minValueCount = 0;
 
         for (int i = 0; i < A.length; i++){
             if (A[i] < minValue)
@@ -23,14 +28,11 @@ public class Task8 {
             }
         }
 
-        int[] B = new int[A.length - minValueCount];
-        int j = 0;
+        int[] B;
+        int j;
 
-        for (int i = 0; i < A.length; i++){
-            System.out.print(A[i] + " ");
-        }
-
-        System.out.print("\n");
+        B = new int[A.length - minValueCount];
+        j = 0;
 
         for (int i = 0; i < A.length; i++){
             if (A[i] != minValue){
@@ -39,8 +41,7 @@ public class Task8 {
             }
         }
 
-        for (int i = 0; i < B.length; i++){
-            System.out.print(B[i] + " ");
-        }
+        System.out.println("Исходная последовательность A:\n"+ Arrays.toString(A) +"\n");
+        System.out.println("Результирующая последовательность В:\n"+ Arrays.toString(B) +"\n");
     }
 }

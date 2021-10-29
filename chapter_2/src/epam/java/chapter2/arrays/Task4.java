@@ -1,26 +1,29 @@
 package epam.java.chapter2.arrays;
 
+import java.util.Arrays;
+
 /**
  * Даны действительные числа а1 ,а2 ,..., аn . Поменять местами наибольший и наименьший элементы.
  */
 public class Task4 {
     public static void main(String[] args) {
-        double[] A = {-5.23, -5.132, -5.143, -5.13413, -5.14,
-                -5.34, 1.9009, 0.131344};
+        double[] A;
 
-        System.out.println("Исходная последовательность:");
+        double maxValue;
+        double minValue;
 
-        for (int i = 0; i < A.length; i++)
-            System.out.print(A[i] + " ");
+        int maxIndex;
+        int minIndex;
 
-        System.out.print("\n");
+        A = new double[] {-5.23, -5.132, -5.143, -5.13413, -5.14, -5.34, 1.9009, 0.131344};
 
+        System.out.println("Исходная последовательность:\n"+ Arrays.toString(A) +"\n");
 
-        double maxValue = -10000;
-        int maxIndex = 0;
+        maxValue = Double.MIN_VALUE;
+        maxIndex = 0;
 
-        double minValue = 100000;
-        int minIndex = 0;
+        minValue = Double.MAX_VALUE;
+        minIndex = 0;
 
         for (int i = 0; i < A.length; i++){
             if (maxValue < A[i]){
@@ -37,9 +40,6 @@ public class Task4 {
         A[minIndex] = maxValue;
         A[maxIndex] = minValue;
 
-        System.out.println("Результирующая последовательность:");
-
-        for (int i = 0; i < A.length; i++)
-            System.out.print(A[i] + " ");
+        System.out.println("Результирующая последовательность:\n"+ Arrays.toString(A) +"\n");
     }
 }

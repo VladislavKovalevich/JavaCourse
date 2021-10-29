@@ -7,11 +7,16 @@ import java.util.Random;
  */
 public class Task1 {
     public static void main(String[] args) {
-        int []  matrix[] = new int[7][3];
+        int matrixSize;
+        int matrix[][];
+        Random r;
 
-        Random r = new Random();
+        matrixSize = 7;
+        matrix = new int[matrixSize][matrixSize];
+        r = new Random();
 
         for (int i = 0; i < matrix.length; i++){
+
             for (int j = 0; j < matrix[i].length; j++){
                 matrix[i][j] = r.nextInt(50) + 10;
                 System.out.print(" "+ matrix[i][j] + " ");
@@ -21,17 +26,15 @@ public class Task1 {
         }
 
         System.out.println();
-        System.out.println();
 
-        for (int i = 0; i < matrix[i].length; i++){
+        for (int i = 0; i < matrix.length; i++){
 
-            if ((i + 1) % 2 != 0 &&
-                 matrix[0][i] > matrix[matrix.length - 1][i])
+            if ((i + 1) % 2 != 0 && matrix[0][i] > matrix[matrix.length - 1][i])
             {
                 System.out.print("столбец "+ (i+1) + " = " );
 
-                for (int j = 0; j < matrix.length; j++) {
-                    System.out.print(matrix[j][i] + " ");
+                for (int[] aMatrix : matrix) {
+                    System.out.print(aMatrix[i] + " ");
                 }
 
                 System.out.println();

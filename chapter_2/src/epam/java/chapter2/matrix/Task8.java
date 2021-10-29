@@ -1,6 +1,5 @@
 package epam.java.chapter2.matrix;
 
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,10 +10,13 @@ import java.util.Scanner;
  */
 public class Task8 {
     public static void main(String[] args) {
+        int matrix[][];
+        Random r;
+        Scanner in;
 
-        int matrix[][] = new int[7][5];
-
-        Random r = new Random();
+        matrix = new int[7][5];
+        r = new Random();
+        in = new Scanner(System.in);
 
         for (int i = 0; i < matrix.length; i++){
             for (int j = 0; j < matrix[i].length; j++){
@@ -25,36 +27,60 @@ public class Task8 {
             System.out.println();
         }
 
-        int indexColSrc, indexColDest;
+        int indexColSrc;
+        int indexColDest;
 
-        try (Scanner in = new Scanner(System.in)) {
+        while (true) {
+            int curr;
 
-            System.out.print("Введите номер столбца: ");
-            indexColSrc = in.nextInt();
-
-            System.out.print("Введите номер строки: ");
-            indexColDest = in.nextInt();
-
-            if (indexColDest >= 0 && indexColSrc >= 0){
-                int temp;
-
-                for (int i = 0; i < matrix.length; i++){
-                    temp = matrix[i][indexColSrc];
-                    matrix[i][indexColSrc] = matrix[i][indexColDest];
-                    matrix[i][indexColDest] = temp;
-                }
-
+            System.out.print("Введите номер первого столбца: ");
+            while (!in.hasNextInt()) {
+                in.next();
+                System.out.print("Введите номер первого столбца: ");
             }
 
-        } catch (InputMismatchException ex) {
-            System.out.println("ошибка ввода");
+            curr = in.nextInt();
+
+            if (curr < matrix[0].length){
+                indexColSrc = curr;
+                break;
+            }else {
+                System.out.println("Вход за пределы матрцы!");
+            }
+        }
+
+        while (true) {
+            int curr;
+
+            System.out.print("Введите номер второго столбца: ");
+            while (!in.hasNextInt()) {
+                in.next();
+                System.out.print("Введите номер второго столбца: ");
+            }
+
+            curr = in.nextInt();
+
+            if (curr < matrix[0].length && curr != indexColSrc){
+                indexColDest = curr;
+                break;
+            }else {
+                System.out.println("Вход за пределы матрцы!");
+            }
+        }
+
+        int temp;
+
+        for (int i = 0; i < matrix.length; i++){
+            temp = matrix[i][indexColSrc];
+            matrix[i][indexColSrc] = matrix[i][indexColDest];
+            matrix[i][indexColDest] = temp;
         }
 
         System.out.println();
 
         for (int[] aMatrix : matrix) {
             for (int anAMatrix : aMatrix) {
-                System.out.print(anAMatrix + " ");
+                System.out.print(" " + anAMatrix + " ");
             }
             System.out.println();
         }

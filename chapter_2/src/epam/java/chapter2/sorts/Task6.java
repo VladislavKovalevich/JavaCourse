@@ -1,5 +1,7 @@
 package epam.java.chapter2.sorts;
 
+import java.util.Arrays;
+
 /**
  * Сортировка Шелла. Дан массив n действительных чисел.
  * Требуется упорядочить его по возрастанию.
@@ -10,13 +12,16 @@ package epam.java.chapter2.sorts;
  */
 public class Task6 {
     public static void main(String[] args) {
-        int[] array = {55, 34, 44, 96, 114, 4, 0, 51, 19, 72};
+        int[] array;
+
+        array = new int[]{55, 34, 44, 96, 114, 4, 0, 51, 19, 72};
 
         for (int i = 0; i < array.length - 1;) {
 
             if (array[i] > array[i + 1]){
 
-                int temp = array[i];
+                int temp;
+                temp = array[i];
                 array[i] = array[i + 1];
                 array[i + 1] = temp;
 
@@ -30,8 +35,6 @@ public class Task6 {
 
         }
 
-        for (int item : array) {
-            System.out.print(item + " ");
-        }
+        System.out.println(Arrays.toString(array));
     }
 }

@@ -5,34 +5,47 @@ package epam.java.chapter2.decomposition;
  */
 public class Task11 {
     public static void main(String[] args) {
-        int A = 1235;
-        int B = 3215;
+        int A;
+        int B;
 
-        String s = "";
+        int countNumbersA;
+        int countNumbersB;
 
-        int countNumbersA = getCountNumbers(A);
-        int countNumbersB = getCountNumbers(B);
+        A = 1235;
+        B = 321556;
+
+        countNumbersA = getCountNumbers(A);
+        countNumbersB = getCountNumbers(B);
+
+        System.out.println(cmpResult(countNumbersA, countNumbersB));
+    }
+
+    private static String cmpResult(int countNumbersA, int countNumbersB) {
+        String res;
+
+        res = "";
 
         switch (getCmpResult(countNumbersA, countNumbersB)){
             case 0:{
-                s = "Количество цифр одинаково";
+                res = "Количество цифр одинаково";
                 break;
             }
             case 1:{
-                s = "Количество цифр в А больше чем в В";
+                res = "Количество цифр в А больше чем в В";
                 break;
             }
             case -1:{
-                s = "Количество цифр в B больше чем в A";
+                res = "Количество цифр в B больше чем в A";
                 break;
             }
         }
-
-        System.out.println(s);
+        return res;
     }
 
     private static int getCountNumbers(int number) {
-        int counter = 0;
+        int counter;
+
+        counter = 0;
 
         while (number % 10 != 0){
             number = number / 10;

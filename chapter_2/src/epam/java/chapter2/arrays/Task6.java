@@ -6,10 +6,12 @@ package epam.java.chapter2.arrays;
  */
 public class Task6 {
     public static void main(String[] args) {
-        double[] A = {-1.0, -5.0, 5.5, 7.1, 3.9, -5.5, 2.9, 0.9};
-
-        double sum = 0;
+        double[] A;
+        double sum;
         boolean isPrimalIndex;
+
+        A = new double[] {-1.0, -5.0, 5.5, 7.1, 3.9, -5.5, 2.9, 0.9};
+        sum = 0;
 
         for (int i = 0; i < A.length; i++) {
 

@@ -1,22 +1,23 @@
 package epam.java.chapter2.arrays;
 
+import java.util.Arrays;
+
 /**
  * Дана последовательность действительных чисел а1 ,а2 ,..., ап. Заменить все ее члены, большие данного Z, этим
  * числом. Подсчитать количество замен.
  */
 public class Task2 {
     public static void main(String[] args) {
-        int Z = 75;
+        int Z;
+        int[] A;
+        int changeCount;
 
-        int[] A = {5, 36, 75, 4, 3, 76, 91, 0, 11};
+        Z = 75;
+        A = new int[]{5, 36, 75, 4, 3, 76, 91, 0, 11};
 
-        int changeCount = 0;
+        System.out.println("Исходная последовательность:\n" + Arrays.toString(A) + "\n");
 
-        System.out.println("Исходная последовательность:");
-        for (int i = 0; i < A.length; i++)
-            System.out.print(A[i] + " ");
-
-        System.out.print("\n");
+        changeCount = 0;
 
         for (int i = 0 ; i < A.length; i++){
             if (A[i] > Z){
@@ -25,12 +26,7 @@ public class Task2 {
             }
         }
 
-        System.out.println("Результирующая последовательность:");
-        for (int i = 0; i < A.length; i++)
-            System.out.print(A[i] + " ");
-
-        System.out.print("\n");
-
+        System.out.println("Результирующая последовательность:\n" + Arrays.toString(A) + "\n");
         System.out.println("Количество замен = " + changeCount);
     }
 }

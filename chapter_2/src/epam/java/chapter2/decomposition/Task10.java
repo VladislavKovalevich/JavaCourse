@@ -1,6 +1,7 @@
 package epam.java.chapter2.decomposition;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,25 +10,42 @@ import java.util.List;
  */
 public class Task10 {
     public static void main(String[] args) {
-        int N = 124143;
+        int N;
+        int[] array;
 
-        List<Integer> array;
-
+        N = 11324;
         array = getArrayFromNumber(N);
 
-        for (Integer s:array) {
-            System.out.print(s + " ");
-        }
+        System.out.println(Arrays.toString(array));
     }
 
-    private static List<Integer> getArrayFromNumber(int n) {
-        List<Integer> array = new ArrayList<>();
+    private static int[] getArrayFromNumber(int n) {
+        int[] array;
+        int arrSize;
+        int i;
+
+        arrSize = getDigitCount(n);
+        array = new int[arrSize];
 
         while (n % 10 != 0){
-            array.add(n % 10);
+            array[arrSize - 1] = n % 10;
             n = n / 10;
+            arrSize--;
         }
 
         return array;
+    }
+
+    private static int getDigitCount(int n) {
+        int count;
+
+        count  = 0;
+
+        while (n % 10 != 0){
+            count++;
+            n = n / 10;
+        }
+
+        return count;
     }
 }

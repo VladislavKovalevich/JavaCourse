@@ -10,46 +10,50 @@ import java.util.Random;
  */
 public class Task8 {
     public static void main(String[] args) {
-        int first = 2, last = 5;
         int[] D;
 
         D = fillArray(7);
 
-        if (first < 0 || last < 0 || first >= D.length || last >= D.length){
+        System.out.println(Arrays.toString(D));
 
-            System.out.println("Неверные значения индексов");
+        getSumResult(D, 1);
+        getSumResult(D, 3);
+        getSumResult(D, 4);
 
-        }else {
-
-            int sum;
-
-            sum = getSumResult(D, first, last);
-
-            System.out.println(Arrays.toString(D));
-            System.out.println("Сумма элементов d["+first+"] - d["+last+"] равна: " + sum);
-        }
     }
 
-    private static int getSumResult(int[] d, int first, int last) {
-        if (first > last){
-            int tmp = last;
-            last = first;
-            first = tmp;
-        }
+    private static void getSumResult(int[] d, int first) {
+        int sum;
+        int last;
 
-        int sum = 0;
+        sum = 0;
+        last = getLastIndex(d.length, first);
 
-        for (int i = first; i <= last; i++) {
+        for (int i = first; i < last; i++) {
             sum += d[i];
         }
 
-        return sum;
+        System.out.println("Сумма элементов d["+first+"] - d["+(last-1)+"] равна: " + sum);
+    }
+
+    private static int getLastIndex(int size, int first){
+        int last;
+
+        if ((first + 3) >= size){
+            last = size;
+        }else {
+            last = first + 3;
+        }
+
+        return last;
     }
 
     private static int[] fillArray(int size) {
-        int[] array = new int[size];
+        int[] array;
+        Random r;
 
-        Random r = new Random();
+        array = new int[size];
+        r = new Random();
 
         for (int i = 0; i < array.length; i++) {
             array[i] = r.nextInt(30) + 12;

@@ -5,18 +5,21 @@ package epam.java.chapter2.arrays;
  */
 public class Task1 {
     public static void main(String[] args) {
-        int K = 6;
+        int K;
+        int[] A;
+        int sum;
 
-        int[] A = {23, 36, 75, 34, 132, 76, 91, 81, 101};
+        K = 6;
+        A = new int[]{23, 36, 75, 34, 132, 76, 91, 81, 101};
 
-        int sum = 0;
+        sum = 0;
 
-        for (int i = 0 ; i < A.length; i++){
-            if (A[i] % K == 0){
-                sum += A[i];
+        for (int element : A) {
+            if (element % K == 0) {
+                sum += element;
             }
         }
 
-        System.out.println("Сумма = " + sum);
+        System.out.println("Сумма элементов (кратных "+ K + ") = " + sum);
     }
 }

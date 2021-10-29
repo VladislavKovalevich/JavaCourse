@@ -1,5 +1,6 @@
 package epam.java.chapter2.matrix;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -7,11 +8,18 @@ import java.util.Random;
  */
 public class Task2 {
     public static void main(String[] args) {
-        int []  matrix[] = new int[5][5];
+        int size;
+        int matrix[][];
 
-        Random r = new Random();
+        Random r;
+
+        size = 5;
+        matrix = new int[size][size];
+
+        r = new Random();
 
         for (int i = 0; i < matrix.length; i++){
+
             for (int j = 0; j < matrix[i].length; j++){
                 matrix[i][j] = r.nextInt(50) + 10;
                 System.out.print("  "+matrix[i][j] + "  ");
@@ -19,41 +27,37 @@ public class Task2 {
 
             System.out.println();
         }
-
-
         System.out.println();
 
-        int [] mainDiagonal = new int[matrix.length],
-               sideDiagonal = new int[matrix.length];
+        int [] mainDiagonal;
+        int [] sideDiagonal;
 
-        int mainDiagonalCount = 0, sideDiagonalCount = 0;
+        int mainDiagonalIndex;
+        int sideDiagonalIndex;
+
+        mainDiagonal = new int[size];
+        sideDiagonal = new int[size];
+
+        mainDiagonalIndex = 0;
+        sideDiagonalIndex = 0;
 
         for (int i = 0; i < matrix.length; i++){
             for (int j = 0; j < matrix[i].length; j++){
 
                 if (i == j){
-                    mainDiagonal[mainDiagonalCount++] = matrix[i][j];
+                    mainDiagonal[mainDiagonalIndex++] = matrix[i][j];
                 }
 
                 if (i + j == matrix.length - 1){
-                    sideDiagonal[sideDiagonalCount++] = matrix[i][j];
+                    sideDiagonal[sideDiagonalIndex++] = matrix[i][j];
                 }
             }
         }
 
-
-
-        System.out.print("Главная диагональ: ");
-        for (int i = 0; i < matrix.length; i++){
-            System.out.print(mainDiagonal[i] + " ");
-        }
+        System.out.print("Главная диагональ: " + Arrays.toString(mainDiagonal));
 
         System.out.println();
 
-        System.out.print("Побочная диагональ: ");
-        for (int i = 0; i < matrix.length; i++) {
-            System.out.print(sideDiagonal[i] + " ");
-        }
-
+        System.out.print("Побочная диагональ: " + Arrays.toString(sideDiagonal));
     }
 }

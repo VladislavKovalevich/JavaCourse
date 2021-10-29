@@ -6,10 +6,12 @@ package epam.java.chapter2.arrays;
  */
 public class Task7 {
     public static void main(String[] args) {
-        double[] A = {10.6, -5.0, 5.5, 7.1, 3.9, 15.5, 2.9, 1.9};
-
-        double maxSum = -10000.0;
+        double[] A;
+        double maxSum;// = -10000.0;
         double currSum;
+
+        A = new double[]{10.6, -5.0, 5.5, 7.1, 3.9, 15.5, 2.9, 1.9};
+        maxSum = Double.MIN_VALUE;
 
         for (int i = 0; i < A.length / 2; i++){
             currSum = A[i] + A[A.length - i - 1];
@@ -19,6 +21,6 @@ public class Task7 {
             }
         }
 
-        System.out.println(maxSum);
+        System.out.println("Результат: " + maxSum);
     }
 }

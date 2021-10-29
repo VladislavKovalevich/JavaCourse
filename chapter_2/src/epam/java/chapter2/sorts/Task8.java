@@ -1,33 +1,6 @@
 package epam.java.chapter2.sorts;
 
 import java.util.Random;
-
-class Fraction{
-    private int number;
-    private int denom;
-
-    Fraction(int number, int denom){
-        this.denom = denom;
-        this.number = number;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public int getDenom() {
-        return denom;
-    }
-
-    public void setDenom(int denom) {
-        this.denom = denom;
-    }
-}
-
 /**
  * Даны дроби p1/q1, p2/q2, ..., pn/qn (pi, qi - натуральные).
  * Составить программу, которая приводит эти дроби к общему
@@ -35,25 +8,26 @@ class Fraction{
  */
 public class Task8 {
     public static void main(String[] args) {
-        int N = 5;
-        Fraction[] arrayFraction = new Fraction[N];
+        int N;
+        int arrayFraction[][];
+        Random r;
 
-        Random r = new Random();
-
-        int number;
-        int denom;
+        N = 5;
+        r = new Random();
+        arrayFraction = new int[N][2];
 
         for (int i = 0; i < arrayFraction.length; i++) {
-            number = r.nextInt(20) + 3;
-            denom = r.nextInt(20) + 3;
-            arrayFraction[i] = new Fraction(number, denom);
+            arrayFraction[i][0] = r.nextInt(20) + 3;
+            arrayFraction[i][1] = r.nextInt(20) + 3;
         }
 
-        int lcm_value = 0;
+        int lcm_value;
+        int gcd;
+        int a;
+        int b;
 
-        int gcd = 0;
-        int a = arrayFraction[0].getDenom();
-        int b = arrayFraction[1].getDenom();
+        a = arrayFraction[0][1];
+        b = arrayFraction[1][1];
 
         if (a < b) {
             int tmp = a;
@@ -69,12 +43,11 @@ public class Task8 {
         }
 
         gcd = b;
-
-        lcm_value = (arrayFraction[0].getDenom()*arrayFraction[1].getDenom())/gcd;
+        lcm_value = (arrayFraction[0][1] * arrayFraction[1][1]) / gcd;
 
         for (int i = 2; i < arrayFraction.length; i++) {
             a = lcm_value;
-            b = arrayFraction[i].getDenom();
+            b = arrayFraction[i][1];
 
             if (a < b) {
                 int tmp = a;
@@ -91,42 +64,42 @@ public class Task8 {
 
             gcd = b;
 
-            lcm_value = (lcm_value*arrayFraction[i].getDenom())/gcd;
+            lcm_value = (lcm_value * arrayFraction[i][1]) / gcd;
         }
 
-
-        for (Fraction f : arrayFraction) {
-            System.out.print(f.getNumber() + "/" + f.getDenom() + "  ");
+        System.out.println("Начальное значение дробей: ");
+        for (int[] fraction : arrayFraction) {
+            System.out.print(fraction[0] + "/" + fraction[1] + "  ");
         }
 
-
-        int tempMul = 1;
+        int tempMul;
 
         // приведение к одному знаменателю
         for (int i = 0; i < arrayFraction.length; i++) {
 
-            tempMul = lcm_value / arrayFraction[i].getDenom();
+            tempMul = lcm_value / arrayFraction[i][1];
 
-            int numberFr = arrayFraction[i].getNumber();
+            int numberFr = arrayFraction[i][0];
 
-            arrayFraction[i].setNumber(tempMul* numberFr);
-            arrayFraction[i].setDenom(lcm_value);
+            arrayFraction[i][0] = tempMul * numberFr;
+            arrayFraction[i][1] = lcm_value;
         }
 
         System.out.println();
 
-        for (Fraction f : arrayFraction) {
-            System.out.print(f.getNumber() + "/" + f.getDenom() + "  ");
+        System.out.println("Дроби, приведенные к общему знаменателю: ");
+        for (int[] fraction : arrayFraction) {
+            System.out.print(fraction[0] + "/" + fraction[1] + "  ");
         }
 
         // сортировка дробей
         for (int i = 0; i < arrayFraction.length - 1;) {
 
-            if (arrayFraction[i].getNumber() > arrayFraction[i + 1].getNumber()){
+            if (arrayFraction[i][0] > arrayFraction[i + 1][0]){
 
-                int tempSort = arrayFraction[i].getNumber();
-                arrayFraction[i].setNumber(arrayFraction[i + 1].getNumber());
-                arrayFraction[i + 1].setNumber(tempSort);
+                int tempSort = arrayFraction[i][0];
+                arrayFraction[i][0] = arrayFraction[i + 1][0];
+                arrayFraction[i + 1][0] = tempSort;
 
                 if (i != 0) {
                     i--;
@@ -138,11 +111,10 @@ public class Task8 {
         }
 
         System.out.println();
+        System.out.println("Дроби упорядоченные по возврастанию: ");
 
-        for (Fraction f : arrayFraction) {
-            System.out.print(f.getNumber() + "/" + f.getDenom() + "  ");
+        for (int[] fraction : arrayFraction) {
+            System.out.print(fraction[0] + "/" + fraction[1] + "  ");
         }
     }
 }
-
-
