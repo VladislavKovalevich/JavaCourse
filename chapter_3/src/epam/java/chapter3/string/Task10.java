@@ -1,6 +1,5 @@
 package epam.java.chapter3.string;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -10,17 +9,14 @@ import java.util.Scanner;
 public class Task10 {
     public static void main(String[] args) {
         String inputString;
+        Scanner in;
 
-        try(Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Введите строку:");
+        in = new Scanner(System.in);
 
-            inputString = scanner.nextLine();
+        System.out.println("Введите строку:");
+        inputString = in.nextLine();
 
-            System.out.println("Количество предложений = "+getCountOfSentence(inputString));
-
-        }catch (InputMismatchException ex){
-            System.out.println("Ошибка ввода");
-        }
+        System.out.println("Количество предложений = "+getCountOfSentence(inputString));
     }
 
     private static int getCountOfSentence(String inputString) {

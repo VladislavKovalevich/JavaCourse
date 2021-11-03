@@ -26,10 +26,10 @@ import java.util.regex.Pattern;
  */
 
 public class Task2 {
-    private static final String OPENTAGPATTERN = "<\\w.+?>";
-    private static final String CLOSETAGPATTERN = "</\\w.+?>";
-    private static final String TAGINFOPATTERN = ">.+?<";
-    private static final String EMPTYTAGPATTERN = "<\\w.+?>";
+    private static final String OPEN_TAG_PATTERN = "<\\w.+?>";
+    private static final String CLOSE_TAG_PATTERN = "</\\w.+?>";
+    private static final String TAG_INFO_PATTERN = ">.+?<";
+    private static final String EMPTY_TAG_PATTERN = "<\\w.+?>";
 
     public static void main(String[] args) {
         String xmlString;
@@ -57,10 +57,10 @@ public class Task2 {
     }
 
     private static StringBuilder customXMLParser(String xmlString) {
-        Pattern pOpenTag = Pattern.compile(OPENTAGPATTERN);
-        Pattern pCloseTag = Pattern.compile(CLOSETAGPATTERN);
-        Pattern pInfoTag = Pattern.compile(TAGINFOPATTERN);
-        Pattern pEmptyTag = Pattern.compile(EMPTYTAGPATTERN);
+        Pattern pOpenTag = Pattern.compile(OPEN_TAG_PATTERN);
+        Pattern pCloseTag = Pattern.compile(CLOSE_TAG_PATTERN);
+        Pattern pInfoTag = Pattern.compile(TAG_INFO_PATTERN);
+        Pattern pEmptyTag = Pattern.compile(EMPTY_TAG_PATTERN);
 
         String[] array;
         array = xmlString.split("\n");

@@ -7,11 +7,9 @@ package epam.java.chapter3.string;
 public class Task7 {
     public static void main(String[] args) {
         String string;
-
-        string = " abc cde def qwa zre fqx xwi tr";
-
         StringBuilder newString;
 
+        string = " abc cde def qwa zre fqx xwi tr";
         newString = deleteSpacesAndRepeatedSymbols(string);
 
         System.out.println(newString);

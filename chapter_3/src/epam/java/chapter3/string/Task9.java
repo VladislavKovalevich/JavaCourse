@@ -1,6 +1,5 @@
 package epam.java.chapter3.string;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -11,17 +10,14 @@ import java.util.Scanner;
 public class Task9 {
     public static void main(String[] args) {
         String inputString;
+        Scanner in;
 
-        try(Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Введите строку:");
+        in = new Scanner(System.in);
 
-            inputString = scanner.nextLine();
+        System.out.println("Введите строку:");
+        inputString = in.nextLine();
 
-            countLowerAndUpperCase(inputString);
-        }catch (InputMismatchException ex){
-            System.out.println("Ошибка ввода");
-        }
-
+        countLowerAndUpperCase(inputString);
     }
 
     private static void countLowerAndUpperCase(String inputString) {
@@ -31,10 +27,8 @@ public class Task9 {
         upperCaseCount = getCountOfUpperCaseSymbol(inputString);
         lowerCaseCount = getCountOfLowerCaseSymbol(inputString);
 
-
         System.out.println("Количество символов в верхнем регистре = "+ upperCaseCount);
         System.out.println("Количество символов в верхнем регистре = "+ lowerCaseCount);
-
     }
 
     private static int getCountOfLowerCaseSymbol(String inputString) {

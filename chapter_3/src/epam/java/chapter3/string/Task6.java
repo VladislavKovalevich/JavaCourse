@@ -17,10 +17,9 @@ public class Task6 {
 
     private static StringBuilder getDoubleCharsString(String string) {
         StringBuilder stringBuilder;
+        char currSymbol;
 
         stringBuilder = new StringBuilder();
-
-        char currSymbol;
 
         for (int i = 0; i < string.length(); i++) {
 

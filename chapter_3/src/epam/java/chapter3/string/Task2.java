@@ -5,15 +5,19 @@ package epam.java.chapter3.string;
  */
 public class Task2 {
     public static void main(String[] args) {
-        StringBuilder string = new StringBuilder("ad ad acv cav ars rsa");
+        StringBuilder string;
+
+        string = new StringBuilder("ad ad acv cav ars rsa");
 
         System.out.println(insertBSymbol(string));
     }
 
     private static StringBuilder insertBSymbol(StringBuilder string) {
-        int length = string.length();
+        int length;
+        int i;
 
-        int i = 0;
+        length = string.length();
+        i = 0;
 
         while (i < length) {
 

@@ -14,16 +14,16 @@ public class Task5 {
     }
 
     private static String deleteSpaces(String string) {
-        string = deleteFirstWhiteSpaces(string);
-        string = deleteLastWhiteSpaces(string);
-
         String oneSpace;
         String doubleSpace;
 
         oneSpace = " ";
         doubleSpace = "  ";
 
-        while (string.indexOf(doubleSpace) >= 0){
+        string = deleteFirstWhiteSpaces(string);
+        string = deleteLastWhiteSpaces(string);
+
+        while (string.contains(doubleSpace)){
             string = string.replace(doubleSpace, oneSpace);
         }
 

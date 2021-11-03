@@ -5,10 +5,10 @@ package epam.java.chapter3.string;
  */
 public class Task3 {
     public static void main(String[] args) {
-        String s = "abcdcba";
-
+        String s;
         boolean isPalindrome;
 
+        s = "abcdcba";
         isPalindrome = checkPalindromeString(s);
 
         if (isPalindrome){

@@ -6,11 +6,9 @@ package epam.java.chapter3.string;
 public class Task1 {
     public static void main(String[] args) {
         String string;
+        int maxCountSpaces;
 
         string = "qwer       t  y";
-
-        int maxCountSpaces = 0;
-
         maxCountSpaces = getMaxCountOfSpaces(string);
 
         System.out.println(maxCountSpaces);

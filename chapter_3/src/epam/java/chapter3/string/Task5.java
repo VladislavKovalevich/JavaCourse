@@ -6,10 +6,9 @@ package epam.java.chapter3.string;
 public class Task5 {
     public static void main(String[] args) {
         String string;
+        int countA;
 
         string = "asdasdas dasd asfdfa eaefea feaasfaf asd af ";
-
-        int countA = 0;
 
         countA = getCountASymbol(string);
 
