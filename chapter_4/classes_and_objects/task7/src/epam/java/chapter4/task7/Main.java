@@ -10,18 +10,23 @@ import epam.java.chapter4.task7.entity.Triangle;
  */
 public class Main {
     public static void main(String[] args) {
-        Triangle triangle = new Triangle(new Point(0.0, 0.2), new Point(5.0, 10.1), new Point(0.0, 9.0));
+        Triangle triangle;
+        TriangleAction triangleAction;
+        Point centroidPoint;
 
-        TriangleAction triangleAction = new TriangleAction();
+        triangle = new Triangle(
+                new Point(0.0, 0.2),
+                new Point(5.0, 10.1),
+                new Point(0.0, 9.0)
+        );
+
+        triangleAction = new TriangleAction();
 
         System.out.println("Периметр треугольника = " + triangleAction.getPerimeter(triangle));
         System.out.println("Площадь треугольника = " + triangleAction.getSquare(triangle));
 
-        Point centroidPoint;
-
         centroidPoint = triangleAction.getCentroid(triangle);
 
         System.out.println("Точка пересечения медиан = " + centroidPoint.getX() + ", "+ centroidPoint.getY());
-
     }
 }

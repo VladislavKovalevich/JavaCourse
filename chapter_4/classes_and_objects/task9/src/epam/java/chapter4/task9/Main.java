@@ -31,25 +31,30 @@ public class Main {
         booksDataBase = new BooksDataBase(books);
         booksDataBaseAction= new BooksDataBaseAction();
 
-        int year = 1998;
-        String publishingHouse = "Вашингтон";
+
         String author = "Жюль Верн";
 
         System.out.println("Книги автора " + author);
 
-        for (Book b : booksDataBaseAction.searchBooksByAuthor(booksDataBase, "Жюль Верн")) {
+        for (Book b : booksDataBaseAction.searchBooksByAuthor(booksDataBase, author)) {
             System.out.println(b.toString());
         }
+
+
+        String publishingHouse = "Вашингтон";
 
         System.out.println("Книги печатного дома " + publishingHouse);
 
-        for (Book b : booksDataBaseAction.searchBooksByPublishingHouse(booksDataBase, "Вашингтон")) {
+        for (Book b : booksDataBaseAction.searchBooksByPublishingHouse(booksDataBase, publishingHouse)) {
             System.out.println(b.toString());
         }
 
+
+        int year = 1998;
+
         System.out.println("Книги изданные с "+ year + " года");
 
-        for (Book b : booksDataBaseAction.searchBooksByYear(booksDataBase, 1998)) {
+        for (Book b : booksDataBaseAction.searchBooksByYear(booksDataBase, year)) {
             System.out.println(b.toString());
         }
     }

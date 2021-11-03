@@ -11,11 +11,13 @@ import epam.java.chapter4.task6.entity.Time;
  */
 public class Main {
     public static void main(String[] args) {
-        Time time = new Time(11, 23, 59);
+        Time time;
+        TimeAction timeAction;
+
+        time = new Time(11, 23, 59);
+        timeAction = new TimeAction();
 
         System.out.println("Начальное время: " + time.toString());
-
-        TimeAction timeAction = new TimeAction();
 
         timeAction.changeHours(time, 24);
         System.out.println("Изменение значения количества часов: " + time.toString());

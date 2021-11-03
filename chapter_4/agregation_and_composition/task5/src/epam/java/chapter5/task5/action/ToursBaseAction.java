@@ -25,7 +25,9 @@ public class ToursBaseAction {
     }
 
     public Tour[] sortToursByPrice(ToursBase toursBase){
-        Tour[] tours = toursBase.getTours();
+        Tour[] tours;
+
+        tours = toursBase.getTours();
 
         for (int i = 0; i < tours.length - 1; i++) {
 

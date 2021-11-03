@@ -23,19 +23,22 @@ public class Main {
                 new BankAccount(
                         new Client("Kowalewich", "Wladislaw", "Andreewich"),
                         new Account[]{
-                                new Account(1001, 125.0), new Account(1981, 400.0)
+                                new Account(1001, 125.0),
+                                new Account(1981, 400.0)
                         }
                 ),
                 new BankAccount(
                         new Client("Igorev", "Andrey", "Mihailovich"),
                         new Account[]{
-                                new Account(5431, -452.8), new Account(4512, 1000.0)
+                                new Account(5431, -452.8),
+                                new Account(4512, 1000.0)
                         }
                 ),
                 new BankAccount(
                         new Client("Ivanov", "Ivan", "Ivanovich"),
                         new Account[]{
-                                new Account(5567, 560.7), new Account(3341, -490.5)
+                                new Account(5567, 560.7),
+                                new Account(3341, -490.5)
                         }
                 )
         };

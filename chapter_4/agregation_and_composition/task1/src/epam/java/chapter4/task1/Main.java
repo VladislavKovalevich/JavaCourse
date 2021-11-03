@@ -12,23 +12,30 @@ import epam.java.chapter4.task1.action.TextAction;
  */
 public class Main {
     public static void main(String[] args) {
-        Word[] title = new Word[]{new Word("Text"), new Word("Title")};
-        Word author = new Word("Joseph I.A.");
-        Sentence[] sentences = {
+        Word[] title;
+        Word author;
+        Sentence[] sentences;
+        Text text;
+        TextAction textAction;
+
+        title = new Word[]{new Word("Text"), new Word("Title")};
+        author = new Word("Joseph I.A.");
+
+        sentences = new Sentence[]{
                 new Sentence(new Word[]{new Word("Hi"), new Word("Mark")}, '!'),
                 new Sentence(new Word[]{new Word("Hello,"), new Word("how"), new Word("are"), new Word("you")}, '?'),
                 new Sentence(new Word[]{new Word("I"), new Word("am"), new Word("fine,"), new Word("and"), new Word("you")}, '?'),
                 new Sentence(new Word[]{new Word("I"), new Word("am"), new Word("too")}, '.'),
         };
 
-        Text text = new Text(title,sentences,author);
-        TextAction textAction = new TextAction();
+        text = new Text(title,sentences,author);
+        textAction = new TextAction();
 
         System.out.println(textAction.getTextTitle(text));
-
         System.out.println(textAction.printText(text) + "\n");
 
-        Sentence addSentence = new Sentence(new Word[]{new Word("I"), new Word("am"), new Word("too")}, '?');
+        Sentence addSentence;
+        addSentence = new Sentence(new Word[]{new Word("I"), new Word("am"), new Word("too")}, '?');
 
         text = textAction.addSentenceToText(addSentence, text);
 

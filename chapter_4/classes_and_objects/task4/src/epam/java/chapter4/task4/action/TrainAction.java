@@ -29,11 +29,13 @@ public class TrainAction {
     }
 
     public StringBuilder getInfoAboutTrainByNumber(Train[] trains, int number){
-        StringBuilder infoBuilder = new StringBuilder("Информация о поезде с номером ");
+        StringBuilder infoBuilder;
+        Train train;
 
+        infoBuilder = new StringBuilder("Информация о поезде с номером ");
         infoBuilder.append(number).append(": ");
 
-        Train train = null;
+        train = null;
 
         for (Train currTrain: trains) {
 
@@ -75,24 +77,21 @@ public class TrainAction {
     }
 
     private int compareInfoAboutTrains(Train train, Train train1) {
-        int result = 0;
+        int result;
+
+        result = 0;
 
         if (train.getArrivalPoint().compareTo(train1.getArrivalPoint()) > 0) {
 
             result = 1;
 
         }else {
-
             if (train.getArrivalPoint().compareTo(train1.getArrivalPoint()) == 0){
 
                 if (train.getDepartureDate().getTime() > train1.getDepartureDate().getTime()){
                     result = 1;
                 }
-
-            }else{
-                result = 0;
             }
-
         }
 
         return result;

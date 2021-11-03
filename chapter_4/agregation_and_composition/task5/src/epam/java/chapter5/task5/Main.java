@@ -28,13 +28,17 @@ public class Main {
         toursBaseAction = new ToursBaseAction();
 
 
-        Tour tour[] = toursBaseAction.sortToursByPrice(toursBase);
+        Tour tour[];
+
+        tour = toursBaseAction.sortToursByPrice(toursBase);
 
         for (Tour t : tour) {
             System.out.println(t.toString());
         }
 
-        List<Tour> tourList = toursBaseAction.searchTourByType(toursBase, TourType.SHOPPING);
+        List<Tour> tourList;
+
+        tourList = toursBaseAction.searchTourByType(toursBase, TourType.SHOPPING);
 
         System.out.println();
 

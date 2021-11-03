@@ -49,7 +49,9 @@ public class TextAction {
     }
 
     public Text addSentenceToText(Sentence sentence, Text text){
-        Sentence[] tempSentences = new Sentence[text.getSentences().length + 1];
+        Sentence[] tempSentences;
+
+        tempSentences = new Sentence[text.getSentences().length + 1];
 
         for (int i = 0; i < text.getSentences().length; i++) {
             tempSentences[i] = text.getSentences()[i];
@@ -58,7 +60,6 @@ public class TextAction {
         tempSentences[tempSentences.length - 1] = sentence;
 
         text.setSentences(tempSentences);
-
 
         return text;
     }

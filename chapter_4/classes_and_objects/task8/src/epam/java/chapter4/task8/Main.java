@@ -18,12 +18,15 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) {
-        long min = 1000;
-        long max = 2000;
-
         ArrayList<Customer> customers;
+        CustomerDataBase customerDataBase;
+        CustomerDataBaseAction customerDataBaseAction;
+        long min;
+        long max;
 
         customers = new ArrayList<>();
+        min = 1000;
+        max = 2000;
 
         customers.add(new Customer(1, "Mihalov", "Anton", "Andreevich", "Minsk", 2345, 3345));
         customers.add(new Customer(2, "Antonov", "Petr", "Petrovich", "Grodno", 1001, 9853));
@@ -32,10 +35,6 @@ public class Main {
         customers.add(new Customer(5, "Korneev", "Oleg", "Vladimirovich", "Mogilev", 5042, 5252));
         customers.add(new Customer(6, "Byhau", "Mihail", "Ivaovich", "Gomel", 4039, 5464));
         customers.add(new Customer(7, "Qwerty", "Ivan", "Andreevich", "Minsk", 2941, 2257));
-
-
-        CustomerDataBase customerDataBase;
-        CustomerDataBaseAction customerDataBaseAction;
 
         customerDataBase = new CustomerDataBase(customers);
         customerDataBaseAction = new CustomerDataBaseAction();

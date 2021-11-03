@@ -16,7 +16,13 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws ParseException {
-        Train[] trains = {
+        Train[] trains;
+        Train[] trainsSortedByNumber;
+        Train[] trainsSortedByArrivalPoint;
+        StringBuilder stringBuilder;
+        TrainAction trainAction;
+
+        trains = new Train[]{
                 new Train("Warszawa", 34, Train.getTimeFormat().parse("11:22")),
                 new Train("Warszawa", 99, Train.getTimeFormat().parse("12:18")),
                 new Train("Warszawa", 31, Train.getTimeFormat().parse("16:59")),
@@ -24,18 +30,13 @@ public class Main {
                 new Train("Minsk", 49, Train.getTimeFormat().parse("09:47")),
         };
 
-        TrainAction trainAction = new TrainAction();
-
-        Train[] trainsSortedByNumber;
+        trainAction = new TrainAction();
 
         trainsSortedByNumber = trainAction.sortTrainArrayByNumber(trains);
         System.out.println(Arrays.toString(trainsSortedByNumber));
 
-        Train[] trainsSortedByArrivalPoint;
         trainsSortedByArrivalPoint = trainAction.sortTrainArrayByArrivalPoint(trains);
         System.out.println(Arrays.toString(trainsSortedByArrivalPoint));
-
-        StringBuilder stringBuilder;
 
         stringBuilder = trainAction.getInfoAboutTrainByNumber(trains, 34);
         System.out.println(stringBuilder.toString());

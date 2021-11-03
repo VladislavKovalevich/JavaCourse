@@ -12,9 +12,11 @@ public class StudentAction {
     }
 
     public List<Student> getBestStudents(Student[] students){
-        List<Student> studentList = new ArrayList<>();
+        List<Student> studentList;
         int[] notes;
         boolean isGoodStudent;
+
+        studentList = new ArrayList<>();
 
         for (int i = 0; i < students.length; i++) {
 
@@ -27,7 +29,6 @@ public class StudentAction {
                     isGoodStudent = false;
                     break;
                 }
-
             }
 
             if (isGoodStudent){
@@ -40,7 +41,9 @@ public class StudentAction {
     }
 
     public String getStringFromBestStudentList(List<Student> students){
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder;
+
+        stringBuilder = new StringBuilder();
 
         for (Student student : students) {
             stringBuilder.append(student.getName());

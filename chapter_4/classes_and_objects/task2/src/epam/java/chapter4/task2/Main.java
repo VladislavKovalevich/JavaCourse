@@ -9,12 +9,13 @@ import epam.java.chapter4.task2.entity.Test2;
  */
 public class Main {
     public static void main(String[] args) {
-        Test2 example1 = new Test2();
+        Test2 example1;
+        Test2 example2;
+
+        example1 = new Test2();
+        example2 = new Test2(3, 5);
 
         System.out.println(example1.toString());
-
-        Test2 example2 = new Test2(3, 5);
-
         System.out.println(example2.toString());
 
         example2.setX(6);

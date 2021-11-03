@@ -118,7 +118,7 @@ public class BankAccountBaseAction {
 
     public double getAllPositiveAccountsSum(BankAccountsBase bankAccountsBase){
         double sum = 0.0;
-        double tempBalance = 0.0;
+        double tempBalance;
 
         for (BankAccount b : bankAccountsBase.getBankAccounts()) {
 
@@ -138,7 +138,7 @@ public class BankAccountBaseAction {
 
     public double getAllNegativeAccountsSum(BankAccountsBase bankAccountsBase){
         double sum = 0.0;
-        double tempBalance = 0.0;
+        double tempBalance;
 
         for (BankAccount b : bankAccountsBase.getBankAccounts()) {
 

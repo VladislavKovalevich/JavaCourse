@@ -12,7 +12,11 @@ import epam.java.chapter4.task3.entity.Region;
  */
 public class Main {
     public static void main(String[] args) {
-        Region[] regions = new Region[]{
+        Country country;
+        CountryAction countryAction;
+        Region[] regions;
+
+        regions = new Region[]{
                 new Region("Минская область", new City("Минск"),
                         new District[]{
                                 new District(new City("Молодечно")),
@@ -39,9 +43,8 @@ public class Main {
                         }),
         };
 
-        Country country = new Country("Беларусь", new City("Минск"), regions, 207000);
-
-        CountryAction countryAction = new CountryAction();
+        country = new Country("Беларусь", new City("Минск"), regions, 207000);
+        countryAction = new CountryAction();
 
         System.out.println("Площадь страны: " + countryAction.getCountrySquare(country) + "\n");
         System.out.println("Столица: " + countryAction.getCapital(country) + "\n");

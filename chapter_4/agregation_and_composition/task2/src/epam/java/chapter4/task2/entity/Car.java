@@ -3,7 +3,7 @@ package epam.java.chapter4.task2.entity;
 public class Car {
     private String model;
     private Engine engine;
-    private Wheel[] wheels = new Wheel[4];
+    private Wheel[] wheels;
     private double currTankVolume;
     private double maxTankVolume;
     private double mileage;

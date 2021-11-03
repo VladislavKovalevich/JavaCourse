@@ -12,7 +12,11 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        Student[] students = {
+        Student[] students;
+        StudentAction studentAction;
+        List<Student> bestStudents;
+
+        students = new Student[]{
                 new Student("Alekseev A.A.", "851001", new int[]{9,9,9,9,9}),
                 new Student("Bobrov E.S.", "851002", new int[]{7,7,10,10,9}),
                 new Student("Shelby W.S.", "651006", new int[]{7,9,9,9,9}),
@@ -24,8 +28,7 @@ public class Main {
                 new Student("Saharow B.W.", "751004", new int[]{10,10,9,9,9})
         };
 
-        StudentAction studentAction = new StudentAction();
-        List<Student> bestStudents;
+        studentAction = new StudentAction();
 
         bestStudents = studentAction.getBestStudents(students);
 

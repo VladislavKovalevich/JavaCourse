@@ -13,7 +13,7 @@ public class CountryAction {
     }
 
     public double getCountrySquare(Country country){
-        double tempSquare = 0;
+        double tempSquare;
 
         tempSquare = country.getSquare();
 

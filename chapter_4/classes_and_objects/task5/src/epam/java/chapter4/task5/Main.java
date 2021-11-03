@@ -12,8 +12,11 @@ import epam.java.chapter4.task5.entity.DecimalCounter;
 
 public class Main {
     public static void main(String[] args) {
-        DecimalCounter counter = new DecimalCounter(0);
-        DecimalCounterAction counterAction = new DecimalCounterAction();
+        DecimalCounter counter;
+        DecimalCounterAction counterAction;
+
+        counter = new DecimalCounter(8);
+        counterAction = new DecimalCounterAction();
 
         System.out.println("Инкремент");
         System.out.println(counterAction.getInfoAboutCounter(counter));
@@ -32,6 +35,5 @@ public class Main {
             counter = counterAction.decrementCounter(counter);
             System.out.println(counterAction.getInfoAboutCounter(counter));
         }
-
     }
 }
