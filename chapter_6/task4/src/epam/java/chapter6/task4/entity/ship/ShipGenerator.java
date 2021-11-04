@@ -13,9 +13,11 @@ public class ShipGenerator implements Runnable {
 
     @Override
     public void run() {
-        int count = 0;
+        int count;
         ShipSize shipSize;
         Ship ship;
+
+        count = 0;
 
         while (count < shipCount){
             Thread.currentThread().setName("Ship-generator");
@@ -40,19 +42,28 @@ public class ShipGenerator implements Runnable {
     }
 
     private ShipSize getRandomSize() {
-        Random random = new Random();
+        Random random;
+
+        random = new Random();
+
         return ShipSize.values()[random.nextInt(ShipSize.values().length)];
     }
 
     private boolean getRandomMode(){
-        Random random = new Random();
-        boolean[] b = {false, true};
+        Random random;
+        boolean[] b;
+
+        random = new Random();
+        b = new boolean[]{false, true};
 
         return b[random.nextInt(b.length)];
     }
 
     private int getRandomCargoNumber(int shipSize){
-        Random random = new Random();
+        Random random;
+
+        random = new Random();
+
         return random.nextInt(shipSize - 1);
     }
 }

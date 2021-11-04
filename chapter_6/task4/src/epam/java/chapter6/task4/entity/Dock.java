@@ -22,7 +22,9 @@ public class Dock implements Runnable{
                 Thread.currentThread().setName("Dock" + dockNumber);
 
                 Thread.sleep(500);
-                Ship ship = shipQueue.getShip();
+                Ship ship;
+
+                ship = shipQueue.getShip();
 
                 if (ship != null){
 

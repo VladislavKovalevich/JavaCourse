@@ -8,67 +8,36 @@ import epam.java.chapter6.task3.client.logic.ConsoleInputLogic;
 import epam.java.chapter6.task3.server.entity.UserType;
 
 import java.io.*;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Arrays;
 
 
 public class Client {
     private static final int serverPort = 8000;
-    private static final String localhost = "127.0.0.1";
-    private static boolean isAuthorized = false;
+    private static final String host = "localhost";
+    private static Socket socket;
+    private static DataInputStream in;
+    private static DataOutputStream out;
 
-    private static void sendRequest(DataOutputStream out, String request){
-        try {
-            out.writeUTF(request);
-            out.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static String[] getResponse(DataInputStream in){
-        String[] responseArgs = null;
-        String response;
-
-        try {
-            response = in.readUTF();
-            responseArgs = response.split("\\|");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return responseArgs;
-    }
 
     public static void main(String[] args) {
-        Socket socket = null;
+        boolean isAuthorized = false;
         try {
             try {
-                System.out.println("Welcome to Client side\n" +
-                        "Connecting to the server\n\t" +
-                        "(IP address " + localhost +
-                        ", port " + serverPort + ")");
+                System.out.println("Подключение к серверу\n\t" + "хост " + host + ", порт " + serverPort + ")");
 
-                InetAddress ipAddress;
-                ipAddress = InetAddress.getByName(localhost);
-                socket = new Socket(ipAddress, serverPort);
-                System.out.println("The connection is established.");
+                socket = new Socket(host, serverPort);
+
+                System.out.println("Соединение установлено");
                 System.out.println("\tLocalPort = " + socket.getLocalPort() + "\n\tInetAddress.HostAddress = " +
-                                socket.getInetAddress().getHostAddress() + "\n\tReceiveBufferSize (SO_RCVBUF) = "
-                                + socket.getReceiveBufferSize());
+                                socket.getInetAddress().getHostAddress());
 
 
-                InputStream  sin  = socket.getInputStream();
-                OutputStream sout = socket.getOutputStream();
-
-                DataInputStream  in ;
-                DataOutputStream out;
-                in  = new DataInputStream (sin );
-                out = new DataOutputStream(sout);
+                in  = new DataInputStream (socket.getInputStream());
+                out = new DataOutputStream(socket.getOutputStream());
 
                 String line = null;
-                String responseArgs[] = null;
+                String responseArgs[];
 
                 ClientLogic clientLogic = new ClientLogic();
                 ConsoleInputLogic consoleInputLogic = new ConsoleInputLogic();
@@ -82,11 +51,11 @@ public class Client {
                 while (true) {
 
                     while (!isAuthorized){
-                        line = clientLogic.getRequest(clientLogic.inputAuthorizationData(consoleInputLogic));
+                        line = clientLogic.getRequest(clientLogic.inputAuthorizationData());
 
-                        sendRequest(out, line);
+                        sendRequest(line);
 
-                        responseArgs = getResponse(in);
+                        responseArgs = getResponse();
 
                         if (responseArgs[0].equals("1")){
                             isAuthorized = true;
@@ -117,7 +86,7 @@ public class Client {
                             break;
                         }
                         case 1:{
-                            line = clientLogic.getRequest(clientLogic.inputSearchParams(consoleInputLogic));
+                            line = clientLogic.getRequest(clientLogic.inputSearchParams());
                             break;
                         }
                         case 2:{
@@ -125,22 +94,22 @@ public class Client {
                             break;
                         }
                         case 3:{
-                            line = clientLogic.getRequest(clientLogic.inputAddFileData(consoleInputLogic));
+                            line = clientLogic.getRequest(clientLogic.inputAddFileData());
                             break;
                         }
                         case 4:{
-                            line = clientLogic.getRequest(clientLogic.inputEditFileParams(consoleInputLogic));
+                            line = clientLogic.getRequest(clientLogic.inputEditFileParams());
                             break;
                         }
                     }
 
-                    sendRequest(out, line);
+                    sendRequest(line);
 
                     if (menuItem == 0){
                         break;
                     }
 
-                    responseArgs = getResponse(in);
+                    responseArgs = getResponse();
 
                     System.out.println(Arrays.toString(responseArgs));
 
@@ -157,5 +126,28 @@ public class Client {
             }
         }
 
+    }
+
+    private static void sendRequest(String request){
+        try {
+            out.writeUTF(request);
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static String[] getResponse(){
+        String[] responseArgs = null;
+        String response;
+
+        try {
+            response = in.readUTF();
+            responseArgs = response.split("\\|");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return responseArgs;
     }
 }

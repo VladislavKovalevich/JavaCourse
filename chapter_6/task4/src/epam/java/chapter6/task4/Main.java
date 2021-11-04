@@ -12,19 +12,27 @@ import java.util.concurrent.Executors;
 
 public class Main {
     public static void main(String[] args) {
-        ShipQueue shipQueue = new ShipQueue();
+        ShipQueue shipQueue;
+        ShipGenerator shipGenerator;
+        Port port;
+        PortCargoThread portCargoThread;
+        Dock[] docks;
 
-        ShipGenerator shipGenerator = new ShipGenerator(shipQueue, 15);
-        Port port = Port.getInstance();
-        PortCargoThread portCargoThread = new PortCargoThread(port);
+        shipQueue = new ShipQueue();
+        shipGenerator = new ShipGenerator(shipQueue, 15);
 
-        Dock[] docks = new Dock[3];
+        port = Port.getInstance();
+        portCargoThread = new PortCargoThread(port);
+
+        docks = new Dock[3];
 
         for (int i = 0; i < docks.length; i++) {
             docks[i] = new Dock(shipQueue, i, port);
         }
 
-        ExecutorService service = Executors.newFixedThreadPool(5);
+        ExecutorService service;
+
+        service = Executors.newFixedThreadPool(5);
 
         service.execute(shipGenerator);
 

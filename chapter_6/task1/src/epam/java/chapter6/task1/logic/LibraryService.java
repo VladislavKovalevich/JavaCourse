@@ -212,7 +212,6 @@ public class LibraryService {
         in = new Scanner(System.in);
 
         pagesCount = (library.getBooks().size() - (library.getBooks().size() % 5))/5;
-
         pagesCount = (library.getBooks().size() % 5 != 0) ? pagesCount + 1 : pagesCount;
 
         if (pageNumber < pagesCount) {

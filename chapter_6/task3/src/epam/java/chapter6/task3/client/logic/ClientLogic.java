@@ -7,20 +7,23 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class ClientLogic {
+    private ConsoleInputLogic consoleInputLogic;
 
     public ClientLogic(){
+        consoleInputLogic = new ConsoleInputLogic();
     }
 
-    public String[] inputEditFileParams(ConsoleInputLogic consoleInputLogic){
-        String[] editParams = new String[4];
+    public String[] inputEditFileParams(){
+        String[] editParams;
         int fileId;
+        int menuItem;
 
+        editParams = new String[4];
         editParams[0] = "edit_file";
 
         fileId = consoleInputLogic.getIntDataFromConsole("Введите id изменяемого файла", 1, 100);
         editParams[1] = String.valueOf(fileId);
 
-        int menuItem;
         String menu = "Введите номер поля для редактирования:\n" +
                 "1 - Изменить имя студента\n" +
                 "2 - Изменить фамилию студента\n" +
@@ -78,9 +81,11 @@ public class ClientLogic {
         return editParams;
     }
 
-    public String[] inputSearchParams(ConsoleInputLogic consoleInputLogic){
-        String searchParams[] = new String[3];
+    public String[] inputSearchParams(){
+        String searchParams[];
         int searchMethod;
+
+        searchParams = new String[3];
 
         searchParams[0] = "search_file";
         searchMethod = consoleInputLogic.getIntDataFromConsole("1 - Поиск по id\n" +
@@ -94,37 +99,38 @@ public class ClientLogic {
         return searchParams;
     }
 
-    public String[] inputAddFileData(ConsoleInputLogic inputService){
-        String fileParams[] = new String[8];
+    public String[] inputAddFileData(){
+        String fileParams[];
 
+        fileParams = new String[8];
         fileParams[0] = "add_file";
 
-        fileParams[1] = inputService.getStringDataFromConsole("Введите имя студента: ");
-        fileParams[2] = inputService.getStringDataFromConsole("Введите фамилию студента: ");
-        fileParams[3] = String.valueOf(inputService.getIntDataFromConsole("Введите номер группы:", 100, 800));
+        fileParams[1] = consoleInputLogic.getStringDataFromConsole("Введите имя студента: ");
+        fileParams[2] = consoleInputLogic.getStringDataFromConsole("Введите фамилию студента: ");
+        fileParams[3] = String.valueOf(consoleInputLogic.getIntDataFromConsole("Введите номер группы:", 100, 800));
 
         String birthDateString;
 
-        birthDateString = inputService.getStringDataFromConsole("Введите дату рождения (формат dd-MM-yy)");
+        birthDateString = consoleInputLogic.getStringDataFromConsole("Введите дату рождения (формат dd-MM-yy)");
         fileParams[4] = birthDateString;
 
         int mathResult;
         int physicsResult;
         int languageResult;
 
-        mathResult = inputService.getIntDataFromConsole("Введите результат ЦТ по математике", 1, 100);
+        mathResult = consoleInputLogic.getIntDataFromConsole("Введите результат ЦТ по математике", 1, 100);
         fileParams[5] = String.valueOf(mathResult);
 
-        physicsResult = inputService.getIntDataFromConsole("Введите результат ЦТ по физике", 1, 100);
+        physicsResult = consoleInputLogic.getIntDataFromConsole("Введите результат ЦТ по физике", 1, 100);
         fileParams[6] = String.valueOf(physicsResult);
 
-        languageResult = inputService.getIntDataFromConsole("Введите результат ЦТ по русскому языку", 1, 100);
+        languageResult = consoleInputLogic.getIntDataFromConsole("Введите результат ЦТ по русскому языку", 1, 100);
         fileParams[7] = String.valueOf(languageResult);
 
         return fileParams;
     }
 
-    public String[] inputAuthorizationData(ConsoleInputLogic inputService){
+    public String[] inputAuthorizationData(){
         String userParams[] = new String[3];
 
         Validator validator;
@@ -135,15 +141,15 @@ public class ClientLogic {
 
         System.out.println("--------------Меню авторизации------------");
 
-        email = inputService.getStringDataFromConsole("Введите email: ");
+        email = consoleInputLogic.getStringDataFromConsole("Введите email: ");
 
         while(!validator.validateEmail(email)){
-            email = inputService.getStringDataFromConsole("Неверный формат email. Введите email: ");
+            email = consoleInputLogic.getStringDataFromConsole("Неверный формат email. Введите email: ");
         }
 
         userParams[1] = email;
 
-        password = inputService.getStringDataFromConsole("Введите пароль:");
+        password = consoleInputLogic.getStringDataFromConsole("Введите пароль:");
 
         userParams[2] = getSHA1Hash(password);
         userParams[0] = "authorized_user";
@@ -152,7 +158,9 @@ public class ClientLogic {
     }
 
     public String getRequest(String[] strings) {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder;
+
+        stringBuilder = new StringBuilder();
 
         for (String s : strings) {
             stringBuilder.append(s).append("|");

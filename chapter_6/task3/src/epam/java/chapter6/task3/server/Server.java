@@ -47,16 +47,19 @@ public class Server {
 
     private static void runConnection(Socket socket){
         try {
-            InputStream sin = socket.getInputStream();
-            OutputStream sout = socket.getOutputStream();
 
-            DataInputStream dis = new DataInputStream(sin);
-            DataOutputStream dos = new DataOutputStream(sout);
+            DataInputStream dis;
+            DataOutputStream dos;
 
-            String line = null;
-            String requestArgs[] = null;
+            String line;
+            String requestArgs[];
             ServerResponse serverResponse;
-            ControllerClass controllerClass = ControllerClass.getInstance();
+            ControllerClass controllerClass;
+
+            dis = new DataInputStream(socket.getInputStream());
+            dos = new DataOutputStream(socket.getOutputStream());
+
+            controllerClass = ControllerClass.getInstance();
 
             while(true){
                 line = dis.readUTF();
@@ -69,6 +72,7 @@ public class Server {
                     System.out.println("Закрытие соединения между клиентом и сервером");
                     break;
                 }
+
                 serverResponse = controllerClass.execute(requestArgs[0], requestArgs);
 
                 System.out.print("Отправка ответа клиенту: ");

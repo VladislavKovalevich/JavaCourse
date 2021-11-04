@@ -13,7 +13,7 @@ public class Config {
 
     private static String getFilePath(String fileName) {
         if (Config.getRootPath() == null) {
-            return "resource/" + fileName;
+            return "resources/" + fileName;
         } else {
             return Config.getRootPath() + fileName;
         }

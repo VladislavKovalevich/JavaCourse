@@ -56,7 +56,9 @@ public class Ship {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder(".Название = " + name +
+        StringBuilder stringBuilder;
+
+        stringBuilder = new StringBuilder(".Название = " + name +
                 ". Количество контейнеров = " + cargoCount +
                 "/" + maxSize.getSize());
 

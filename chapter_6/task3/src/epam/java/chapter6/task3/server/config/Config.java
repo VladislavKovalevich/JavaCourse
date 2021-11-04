@@ -13,9 +13,9 @@ public class Config {
 
     private static String getFilePath(String fileName) {
         if (Config.getRootPath() == null) {
-            return "resource/" + fileName;  // чтобы работало без rootPath и брало из resource
+            return "resources/" + fileName;
         } else {
-            return Config.getRootPath() + fileName;  // для работы с rootPath
+            return Config.getRootPath() + fileName;
         }
     }
 }
