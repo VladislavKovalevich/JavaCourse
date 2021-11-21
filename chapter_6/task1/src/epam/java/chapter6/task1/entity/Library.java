@@ -1,6 +1,6 @@
 package epam.java.chapter6.task1.entity;
 
-import epam.java.chapter6.task1.dao.ClassDAO;
+import epam.java.chapter6.task1.dao.AbstractFactoryDAO;
 import epam.java.chapter6.task1.entity.book.Book;
 import epam.java.chapter6.task1.entity.user.User;
 
@@ -15,8 +15,8 @@ public class Library {
 
     private Library(){
         // загрузка библиотеки
-        this.books = ClassDAO.getInstance().getLibraryDAO().loadBookFromFile();
-        this.users = ClassDAO.getInstance().getUsersDAO().loadUsersInfoFromFile();
+        this.books = AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.TEXT_FILE).getLibraryDAO().getAllBook();
+        this.users = AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.TEXT_FILE).getUserDAO().getAllUsers();
     }
 
     public static Library getInstance() {

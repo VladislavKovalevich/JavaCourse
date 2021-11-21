@@ -1,5 +1,6 @@
 package epam.java.chapter6.task1.logic;
 
+import epam.java.chapter6.task1.command.CommandEnum;
 import epam.java.chapter6.task1.controller.Controller;
 import epam.java.chapter6.task1.controller.ControllerClass;
 import epam.java.chapter6.task1.entity.Library;
@@ -23,23 +24,23 @@ public class MenuService {
         while(menuItem != 0) {
             switch (menuItem) {
                 case 1: {
-                    controller.execute("show_books_list");
+                    controller.execute(CommandEnum.SHOW_BOOKS);
                     break;
                 }
                 case 2: {
-                    controller.execute("search_book");
+                    controller.execute(CommandEnum.SEARCH_BOOK);
                     break;
                 }
                 case 3: {
-                    controller.execute("add_book_to_list");
+                    controller.execute(CommandEnum.ADD_BOOK);
                     break;
                 }
                 case 4: {
-                    controller.execute("edit_book");
+                    controller.execute(CommandEnum.EDIT_BOOK);
                     break;
                 }
                 case 5: {
-                    controller.execute("add_user_to_list");
+                    controller.execute(CommandEnum.ADD_USER);
                     break;
                 }
             }
@@ -56,15 +57,15 @@ public class MenuService {
         while(menuItem != 0) {
             switch (menuItem) {
                 case 1: {
-                    controller.execute("show_books_list");
+                    controller.execute(CommandEnum.SHOW_BOOKS);
                     break;
                 }
                 case 2: {
-                    controller.execute("search_book");
+                    controller.execute(CommandEnum.SEARCH_BOOK);
                     break;
                 }
                 case 3: {
-                    controller.execute("suggest_new_book");
+                    controller.execute(CommandEnum.SUGGEST_NEW_BOOK);
                     break;
                 }
             }

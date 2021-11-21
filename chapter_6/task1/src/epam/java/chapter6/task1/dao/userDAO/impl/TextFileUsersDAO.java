@@ -1,17 +1,19 @@
-package epam.java.chapter6.task1.dao;
+package epam.java.chapter6.task1.dao.userDAO.impl;
 
 import epam.java.chapter6.task1.config.Config;
+import epam.java.chapter6.task1.dao.userDAO.UserDAO;
 import epam.java.chapter6.task1.entity.user.User;
 import epam.java.chapter6.task1.entity.user.UserType;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class UsersDAO {
+public class TextFileUsersDAO implements UserDAO {
     private static final String RESOURCE_USERS_LIST = "usersList.txt";
     private static final String FILE_SEPARATOR = "\\|";
 
-    public ArrayList<User> loadUsersInfoFromFile(){
+    @Override
+    public ArrayList<User> getAllUsers() {
         ArrayList<User> users = new ArrayList<>();
 
         File file;
@@ -38,23 +40,8 @@ public class UsersDAO {
         return users;
     }
 
-    private User buildUserFromString(String fileLine){
-        User user = new User();
-
-        String[] strings = fileLine.split(FILE_SEPARATOR);
-
-        user.setId(Integer.parseInt(strings[0]));
-        user.setName(strings[1]);
-        user.setSurname(strings[2]);
-        user.setEmail(strings[3]);
-        user.setPassword(strings[4]);
-        user.setRole(UserType.valueOf(strings[5].toUpperCase()));
-
-        return user;
-    }
-
-
-    public void saveUserToFile(User user){
+    @Override
+    public void saveUser(User user) {
         File file;
         FileWriter fileWriter;
         BufferedWriter bufferedWriter;
@@ -77,5 +64,20 @@ public class UsersDAO {
         }catch (IOException ex){
             ex.printStackTrace();
         }
+    }
+
+    private User buildUserFromString(String fileLine){
+        User user = new User();
+
+        String[] strings = fileLine.split(FILE_SEPARATOR);
+
+        user.setId(Integer.parseInt(strings[0]));
+        user.setName(strings[1]);
+        user.setSurname(strings[2]);
+        user.setEmail(strings[3]);
+        user.setPassword(strings[4]);
+        user.setRole(UserType.valueOf(strings[5].toUpperCase()));
+
+        return user;
     }
 }

@@ -1,5 +1,6 @@
 package epam.java.chapter6.task1.controller;
 
+import epam.java.chapter6.task1.command.CommandEnum;
 import epam.java.chapter6.task1.command.CommandsStorage;
 
 public class ControllerClass implements Controller{
@@ -19,7 +20,7 @@ public class ControllerClass implements Controller{
     }
 
     @Override
-    public void execute(String command) {
+    public void execute(CommandEnum command) {
         commandsStorage.getCommand(command).executeCommand();
     }
 }

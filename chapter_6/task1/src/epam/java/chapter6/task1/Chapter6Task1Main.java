@@ -1,5 +1,6 @@
 package epam.java.chapter6.task1;
 
+import epam.java.chapter6.task1.command.CommandEnum;
 import epam.java.chapter6.task1.config.Config;
 import epam.java.chapter6.task1.controller.ControllerClass;
 
@@ -10,6 +11,6 @@ public class Chapter6Task1Main {
         }
 
         ControllerClass controller = ControllerClass.getInstance();
-        controller.execute("authorization");
+        controller.execute(CommandEnum.AUTH);
     }
 }

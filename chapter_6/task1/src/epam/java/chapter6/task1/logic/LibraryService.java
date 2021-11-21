@@ -1,7 +1,7 @@
 package epam.java.chapter6.task1.logic;
 
-import epam.java.chapter6.task1.dao.ClassDAO;
-import epam.java.chapter6.task1.dao.LibraryDAO;
+import epam.java.chapter6.task1.dao.AbstractFactoryDAO;
+import epam.java.chapter6.task1.dao.libraryDAO.LibraryDAO;
 import epam.java.chapter6.task1.entity.Library;
 import epam.java.chapter6.task1.entity.book.Book;
 import epam.java.chapter6.task1.entity.book.BookType;
@@ -15,7 +15,7 @@ public class LibraryService {
     private final LibraryDAO libraryDAO;
 
     public LibraryService() {
-        libraryDAO = ClassDAO.getInstance().getLibraryDAO();
+        libraryDAO = AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.TEXT_FILE).getLibraryDAO();
     }
 
     public void addBookToList(){
@@ -50,7 +50,7 @@ public class LibraryService {
 
         library.getBooks().add(book);
 
-        libraryDAO.saveBookToFile(book);
+        libraryDAO.saveBook(book);
 
         System.out.println("Книга " + book + " была добавлена в библиотеку");
 
@@ -134,7 +134,7 @@ public class LibraryService {
                     "0 - Выйти из режима редактирования\n", 0, 5);
         }
 
-        libraryDAO.saveBookListToFile(library.getBooks());
+        libraryDAO.saveAllBooks(library.getBooks());
 
     }
 

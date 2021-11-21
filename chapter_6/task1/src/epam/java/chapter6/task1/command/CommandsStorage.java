@@ -6,19 +6,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CommandsStorage {
-    private Map<String, Command> commandMap = new HashMap<>();
+    private Map<CommandEnum, Command> commandMap = new HashMap<>();
 
     public CommandsStorage(){
-        commandMap.put("authorization", new AuthorizedUserCommand());
-        commandMap.put("show_books_list", new ShowBookListCommand());
-        commandMap.put("add_book_to_list", new AddBookCommand());
-        commandMap.put("edit_book", new EditBookCommand());
-        commandMap.put("search_book", new SearchBookCommand());
-        commandMap.put("add_user_to_list", new AddUserToListCommand());
-        commandMap.put("suggest_new_book", new SuggestNewBookCommand());
+        commandMap.put(CommandEnum.AUTH, new AuthorizedUserCommand());
+        commandMap.put(CommandEnum.SHOW_BOOKS, new ShowBookListCommand());
+        commandMap.put(CommandEnum.ADD_BOOK, new AddBookCommand());
+        commandMap.put(CommandEnum.EDIT_BOOK, new EditBookCommand());
+        commandMap.put(CommandEnum.SEARCH_BOOK, new SearchBookCommand());
+        commandMap.put(CommandEnum.ADD_USER, new AddUserToListCommand());
+        commandMap.put(CommandEnum.SUGGEST_NEW_BOOK, new SuggestNewBookCommand());
     }
 
-    public Command getCommand(String commandName){
+    public Command getCommand(CommandEnum commandName){
         return commandMap.get(commandName);
     }
 }

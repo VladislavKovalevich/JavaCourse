@@ -1,7 +1,7 @@
 package epam.java.chapter6.task1.logic;
 
-import epam.java.chapter6.task1.dao.ClassDAO;
-import epam.java.chapter6.task1.dao.UsersDAO;
+import epam.java.chapter6.task1.dao.AbstractFactoryDAO;
+import epam.java.chapter6.task1.dao.userDAO.UserDAO;
 import epam.java.chapter6.task1.entity.Library;
 import epam.java.chapter6.task1.entity.book.Book;
 import epam.java.chapter6.task1.entity.book.BookType;
@@ -11,10 +11,10 @@ import epam.java.chapter6.task1.entity.user.UserType;
 import java.util.Scanner;
 
 public class UserService {
-    private final UsersDAO usersDAO;
+    private final UserDAO usersDAO;
 
     public UserService(){
-        usersDAO = ClassDAO.getInstance().getUsersDAO();
+        usersDAO = AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.TEXT_FILE).getUserDAO();
     }
 
     public void authorization(){
@@ -136,7 +136,7 @@ public class UserService {
 
         library.getUsers().add(user);
 
-        usersDAO.saveUserToFile(user);
+        usersDAO.saveUser(user);
     }
 
     private boolean validateEmail(String email) {
